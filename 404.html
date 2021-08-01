@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="imgs/Icon.png" type="image/x-icon">
+        <title>Page not Found!</title>
+        <style>
+            body{overflow:hidden;}
+            @font-face { font-family: "ProductSansB"; src: url("../fonts/bold.ttf") format("truetype"); }
+            b0{font-family: "ProductSansB"; color: #FFFFFF; font-size:60vw; text-align:center;letter-spacing:-8vw;}
+            b1{font-family: "ProductSansB"; color: white; font-size:10vw; text-align:center;letter-spacing:-1vw;}
+            .msgbox{
+                position:absolute;
+                top:100%;
+                left:-2%;
+                margin:0%;
+                transform:translateY(-100%);
+                overflow:hidden;
+                user-select:none;
+                width:100vw;
+		height:65vw;
+            }
+            .notfnd{
+                position:absolute;
+                top:47.8vw;
+                left:1.8vw;
+            }
+
+            .pat{
+                animation:opacityanimate 5s infinite ease;
+            }
+
+            @keyframes opacityanimate {
+                0%{opacity:0.2}
+                50%{opacity:0.4}
+                100%{opacity:0.2}
+            }
+        </style>
+    </head>
+    <body onload="loadweb()" id="full">
+        <a href="index.html"><div class="navhome">
+            <div class="arrow"></div>
+        </div></a>
+        <div class="msgbox">
+            <div class="pat"><b0>404<br></h0></div>
+            <div class="notfnd"><b1>not found<br><b1></div>
+        </div>
+    </body>
+    <script src="js/scripts.js"></script>
+</html>

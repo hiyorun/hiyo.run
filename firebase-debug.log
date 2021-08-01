@@ -1,0 +1,36 @@
+[debug] [2021-07-09T15:19:50.747Z] ----------------------------------------------------------------------
+[debug] [2021-07-09T15:19:50.750Z] Command:       /usr/bin/node /usr/bin/firebase serve --only hosting
+[debug] [2021-07-09T15:19:50.750Z] CLI Version:   9.14.0
+[debug] [2021-07-09T15:19:50.751Z] Platform:      linux
+[debug] [2021-07-09T15:19:50.751Z] Node Version:  v16.3.0
+[debug] [2021-07-09T15:19:50.761Z] Time:          Fri Jul 09 2021 22:19:50 GMT+0700 (Western Indonesia Time)
+[debug] [2021-07-09T15:19:50.761Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-07-09T15:19:50.773Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-09T15:19:50.773Z] > authorizing via signed-in user (lundyrasuli03@gmail.com)
+[debug] [2021-07-09T15:19:50.773Z] [iam] checking project hiyorrun for permissions ["firebase.projects.get"]
+[debug] [2021-07-09T15:19:50.777Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-09T15:19:50.777Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-09T15:19:51.019Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Fri, 09 Jul 2021 15:19:51 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-09T15:19:51.028Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hiyorrun:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-07-09T15:19:52.152Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 09 Jul 2021 15:19:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=959","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-09T15:19:52.154Z] > refreshing access token with scopes: []
+[debug] [2021-07-09T15:19:52.154Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-09T15:19:52.351Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Fri, 09 Jul 2021 15:19:52 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-09T15:19:52.359Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hiyorrun [none]
+[debug] [2021-07-09T15:19:52.719Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hiyorrun 200
+[debug] [2021-07-09T15:19:52.719Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hiyorrun {"projectId":"hiyorrun","projectNumber":"294292789863","displayName":"Hiyorrun","name":"projects/hiyorrun","resources":{"hostingSite":"hiyorrun","storageBucket":"hiyorrun.appspot.com","locationId":"europe-west"},"state":"ACTIVE"}
+[debug] [2021-07-09T15:19:52.720Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/hiyorrun/sites 
+[debug] [2021-07-09T15:19:54.068Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/hiyorrun/sites 200
+[debug] [2021-07-09T15:19:54.069Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/hiyorrun/sites {"sites":[{"name":"projects/294292789863/sites/hiyorrun","defaultUrl":"https://hiyorrun.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2021-07-09T15:19:54.069Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hiyorrun/webApps/-/config [none]
+[debug] [2021-07-09T15:19:55.137Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hiyorrun/webApps/-/config 200
+[debug] [2021-07-09T15:19:55.137Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hiyorrun/webApps/-/config {"projectId":"hiyorrun","storageBucket":"hiyorrun.appspot.com","locationId":"europe-west","apiKey":"AIzaSyDqG3ZfpIiEV4_gbdO4SjK2gIpflP000HM","authDomain":"hiyorrun.firebaseapp.com","messagingSenderId":"294292789863"}
+[info] i  hosting: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  hosting: 127.0.0.1 - - [09/Jul/2021:15:19:59 +0000] "GET /css/style.css HTTP/1.1" - - "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [09/Jul/2021:15:19:59 +0000] \"GET /css/style.css HTTP/1.1\" - - \"http://localhost:5000/\" \"Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0\""}}
+[info] i  hosting: 127.0.0.1 - - [09/Jul/2021:15:19:59 +0000] "GET /fonts/reg.otf HTTP/1.1" - - "http://localhost:5000/css/style.css" "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [09/Jul/2021:15:19:59 +0000] \"GET /fonts/reg.otf HTTP/1.1\" - - \"http://localhost:5000/css/style.css\" \"Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0\""}}
+[info] i  hosting: 127.0.0.1 - - [09/Jul/2021:15:20:00 +0000] "GET /fonts/bold.otf HTTP/1.1" - - "http://localhost:5000/css/style.css" "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [09/Jul/2021:15:20:00 +0000] \"GET /fonts/bold.otf HTTP/1.1\" - - \"http://localhost:5000/css/style.css\" \"Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0\""}}
