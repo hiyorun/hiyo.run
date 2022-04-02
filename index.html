@@ -1,42 +1,91 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="imgs/Icon.png" type="image/x-icon">
-    <title>Home</title>
+    <link rel="stylesheet" href="res/css/style.css">
+    <link rel="icon" href="res/imgs/icon.png" type="image/x-icon">
+    <title>Hiyorrun</title>
 </head>
-<body onload="loadweb()" id="full">
-  </div>
-  <div class="navbar" id="navbarid" onclick="openNav()">
-    <font>&#9776;</font>
-  </div>
-  <div id="dropnavid" class="dropnav">
-    <br>
-    <a href="about.html">About Me</a>
-    <a href="projects.html">Works</a>
-    <a href="social.html">Social Medias</a>
-    <a href="equipments.html">My Equipments</a>
-    <a href="#">Buy Me a Tea!</a>
-  </div>
-  <div class="navfocus" id="navfocusid" onclick="openNav()"></div>
-  <div class="container">
-    <center>
-        <table border="0" class="latest">
-            <tr>
-                <td>
-                    <div style="height:28vh;"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="imgs/Me.png" class="logofront"></img>
-                    <h1>A place where I showcase my creative works!<p>
-                    </p></h1>
-                </td>
-            </tr>
-        </table>
-    </center>
-  </div>
+<body style="visibility:hidden;" onload="loaded()">
+	<!--<div style="display:flex;align-items:center;position:fixed;width:100vw;height:100vh;margin:0;padding:0;text-align:center;font-size:3em;pointer-events:none;opacity:.4;z-index:1000;">YOU'RE VIEWING THIS SITE<br>UNDER DEVELOPMENT ENVIRONMENT<br><br>Means what you're seeing right now might differ than the final product. Also paramaters are randomly generated so, names you're seeing here are all fictional.<br>(Except about me, that's completely true)<br>-Hiyo-</div>-->
+	<div id="terms"><ol><p>Terms lol</p><li>Tag my social media or link this website</li><li>Go crazy</li><button onclick="terms()">Ye</button></ol></div>
+	<div id="loading"></div>
+	<div id="nav">
+		<a href="#about">About</a>
+		<a href="#works">Files</a>
+		<a href="https://ko-fi.com/hiyorrun">ko-fi</a>
+		<a>Help</a>
+	</div>
+	<div id="floatingnav">
+		<span><img src="res/imgs/logo.png" style="height:10vh;margin-left:1vw;"></span>
+		<a href="#about">About</a>
+		<a href="#works">Files</a>
+		<a href="https://ko-fi.com/hiyorrun">ko-fi</a>
+		<a>Help</a>
+	</div>
+	<div id="wrapper">
+	<div id="title">
+		<img id="logo" src="res/imgs/null.png">
+	</div>
+	<a href="#patrons"><div id="explore"><i class="arrow"></i></div></a>
+	<div id="rest">
+		<div id="patrons">
+			<a href="https://ko-fi.com/hiyorrun"><div id="subtitle">Supporters</a><i class="link"></i><div class="kofi">Maybe some tea?</div></div>
+			<div id="container">
+			</div>
+			<div id="inpo">Every person that supports me over on <a href="https://ko-fi.com/hiyorrun" style="text-decoration:underline;">ko-fi</a> and willing their name and/or social media to be written and linked here. Each name will dissappear after 3 months from placement.
+			</div>
+		</div>
+		<div id="works">
+			<div id="workstitle">
+				<span>Projects</span>
+			</div>
+			<div id="category">
+				<button class="dropbutton"id="illustbutton" onclick="showillust()">Illustrations</button>
+				<button class="dropbutton" id="ongoingbutton" onclick="showongoing()">Ongoing</button>
+			</div>
+			<div id="illust">
+				<span>You can click on these images to open the full resolution</span>
+				<a href="https://bing.com"><img class="illust" src="https://pbs.twimg.com/media/EzAfV3CVUAUDoUp?format=jpg&name=large"></a>
+				<a href="https://youtube.com"><img class="illust" src="res/imgs/thumbs/ayalite.png"></a>
+			</div>
+			<div id="ongoing">
+				<a href="https://google.com"><img class="ongoingimg" src="https://pbs.twimg.com/media/EzAfV3CVUAUDoUp?format=jpg&name=large"></a>
+				<a href="https://duckduckgo.com"><img class="ongoingimg" src="res/imgs/thumbs/ayalite.png"></a>
+			</div>
+		</div>
+		<div id="about">
+			<span>About Me and This Site</span>
+			<p>Yo!
+			<br>I'm just a normal human being that loves music, "Virtual Youtubers", and making fanarts about them. I made this site from scratch and deploying it to Firebase.</p>
+			<p>Everything I made here will be free to download and use. But please, read <a onclick="terms()">this</a> first if you want to use it on any social medias. And of course, <a href="https://en.hololive.tv/terms">Hololive's term of use</a> also applies. I'm working alone (except on collab obviously) so your support really made my day and I can keep making free content for you. Oh yes, I'm still a high school student so I'll do my best being a content creator and my homeworks.</p>
+			<p>These are my social medias. I rarely use Instagram, but I'll always upload my content there. Twitter will be my to go place. Pixiv only for original size contents. And last, YouTube. Maybe I'll do some drawing stream or 3D modeling, or even gaming lmao. No. My PC is a potato.</p>
+		</div>
+		<div id="socmed">
+			<span class="socmed"><img src="res/imgs/icons/ig.png"></span>
+			<span class="socmed"><img src="res/imgs/icons/twitter.png"></span>
+			<span class="socmed"><img src="res/imgs/icons/pixiv.png"></span>
+			<span class="socmed"><a href="#"><img src="res/imgs/icons/yt.png"></a></span>
+		</div>
+		<div style="height:15vh;background:black;"></div>
+	</div></div>
 </body>
-<script src="js/scripts.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+<!--https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+<script>const firebaseConfig = {
+  apiKey: "AIzaSyDqG3ZfpIiEV4_gbdO4SjK2gIpflP000HM",
+  authDomain: "hiyorrun.firebaseapp.com",
+  databaseURL: "https://hiyorrun-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "hiyorrun",
+  storageBucket: "hiyorrun.appspot.com",
+  messagingSenderId: "294292789863",
+  appId: "1:294292789863:web:a5a089ad2aee2be43dd2c2",
+  measurementId: "G-MFGNGFM3P7"
+};</script>
+<script src="res/js/scripts.js"></script>
 </html>
