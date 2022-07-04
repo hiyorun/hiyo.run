@@ -1,4 +1,4 @@
-# My Site
+# Changelogs
 
 Aug 1st 2021:
 - Trying github for the first time
