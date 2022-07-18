@@ -18,7 +18,7 @@ grey.style.opacity = op;
 function loaded() {document.body.style.visibility = 'visible';loadweb();}
 function hint() {
 	logo.style.opacity = "1";
-	logo.src="res/imgs/title.png";
+	logo.src="src/imgs/title.webm";
 	setTimeout(function(){label.style.opacity = "1";},3000);
 }
 function loadweb() {

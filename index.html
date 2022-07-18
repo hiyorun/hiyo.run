@@ -3,8 +3,8 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="res/css/style.css">
-	<link rel="icon" href="res/imgs/icon.png" type="image/x-icon">
+	<link rel="stylesheet" href="src/css/style.css">
+	<link rel="icon" href="src/imgs/icon.webp" type="image/x-icon">
 	<title>Hiyorrun</title>
 </head>
 
@@ -25,7 +25,7 @@
 		<a>Help</a>
 	</div>
 	<div id="floatingnav">
-		<span><img src="res/imgs/logo.png" style="height:10vh;margin-left:1vw;"></span>
+		<span><img src="src/imgs/logo.webp" style="height:10vh;margin-left:1vw;"></span>
 		<a href="#about">About</a>
 		<a href="#works">Files</a>
 		<a href="https://ko-fi.com/hiyorrun">ko-fi</a>
@@ -33,7 +33,11 @@
 	</div>
 	<div id="wrapper">
 		<div id="title">
-			<img id="logo" src="res/imgs/null.png">
+			<video autoplay id="logo">
+				<source src="src/imgs/null.webp" type="video/webm">
+			  Your browser does not support the video tag.
+			  </video> 
+			<!-- <img id="logo" src="src/imgs/null.webp"> -->
 		</div>
 		<a href="#patrons">
 			<div id="explore"><i class="arrow"></i></div>
@@ -64,7 +68,7 @@
 				<span>You can click on these images to open the full resolution</span>
 				<a href="https://bing.com"><img class="illust"
 						src="https://pbs.twimg.com/media/EzAfV3CVUAUDoUp?format=jpg&name=large"></a>
-				<a href="https://youtube.com"><img class="illust" src="res/imgs/thumbs/ayalite.png"></a>
+				<a href="https://youtube.com"><img class="illust" src="src/imgs/thumbs/ayalite.webp"></a>
 			</div>
 			<div id="ongoing">
 				<!--Yo nothing here m8-->
@@ -87,10 +91,10 @@
 				stream or 3D modeling, or even gaming lmao. No. My PC is a potato.</p>
 		</div>
 		<div id="socmed">
-			<span class="socmed"><img src="res/imgs/icons/ig.png"></span>
-			<span class="socmed"><img src="res/imgs/icons/twitter.png"></span>
-			<span class="socmed"><img src="res/imgs/icons/pixiv.png"></span>
-			<span class="socmed"><a href="#"><img src="res/imgs/icons/yt.png"></a></span>
+			<span class="socmed"><img src="src/imgs/icons/ig.webp"></span>
+			<span class="socmed"><img src="src/imgs/icons/twitter.webp"></span>
+			<span class="socmed"><img src="src/imgs/icons/pixiv.webp"></span>
+			<span class="socmed"><a href="#"><img src="src/imgs/icons/yt.webp"></a></span>
 		</div>
 		<div style="height:15vh;background:black;"></div>
 	</div>
@@ -113,7 +117,7 @@
 			appId: "1:294292789863:web:a5a089ad2aee2be43dd2c2",
 			measurementId: "G-MFGNGFM3P7"
 		};</script>
-	<script src="res/js/scripts.js"></script>
+	<script src="src/js/scripts.js"></script>
 </body>
 
 
