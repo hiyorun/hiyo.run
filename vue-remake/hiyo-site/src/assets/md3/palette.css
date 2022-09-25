@@ -1,0 +1,121 @@
+/*
+ Copyright 2016 Google Inc. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+
+:root {
+  --md-ref-palette-primary0: #000000;
+  --md-ref-palette-primary10: #262626;
+  --md-ref-palette-primary20: #3b3b3b;
+  --md-ref-palette-primary25: #464545;
+  --md-ref-palette-primary30: #565656;
+  --md-ref-palette-primary35: #5f5e5e;
+  --md-ref-palette-primary40: #6b6b6b;
+  --md-ref-palette-primary50: #848484;
+  --md-ref-palette-primary60: #9f9f9f;
+  --md-ref-palette-primary70: #bebebe;
+  --md-ref-palette-primary80: #d9d9d9;
+  --md-ref-palette-primary90: #f4f4f4;
+  --md-ref-palette-primary95: #fcfcfc;
+  --md-ref-palette-primary98: #f6f6f6;
+  --md-ref-palette-primary99: #fbfbfb;
+  --md-ref-palette-primary100: #ffffff;
+  /* secondary */
+  --md-ref-palette-secondary0: #000000;
+  --md-ref-palette-secondary10: #262626;
+  --md-ref-palette-secondary20: #3b3b3b;
+  --md-ref-palette-secondary25: #464545;
+  --md-ref-palette-secondary30: #565656;
+  --md-ref-palette-secondary35: #5f5e5e;
+  --md-ref-palette-secondary40: #6b6b6b;
+  --md-ref-palette-secondary50: #848484;
+  --md-ref-palette-secondary60: #9f9f9f;
+  --md-ref-palette-secondary70: #bebebe;
+  --md-ref-palette-secondary80: #d9d9d9;
+  --md-ref-palette-secondary90: #f4f4f4;
+  --md-ref-palette-secondary95: #fcfcfc;
+  --md-ref-palette-secondary98: #f6f6f6;
+  --md-ref-palette-secondary99: #fbfbfb;
+  --md-ref-palette-secondary100: #ffffff;
+  /* tertiary */
+  --md-ref-palette-tertiary0: #000000;
+  --md-ref-palette-tertiary10: #262626;
+  --md-ref-palette-tertiary20: #3b3b3b;
+  --md-ref-palette-tertiary25: #464545;
+  --md-ref-palette-tertiary30: #565656;
+  --md-ref-palette-tertiary35: #5f5e5e;
+  --md-ref-palette-tertiary40: #6b6b6b;
+  --md-ref-palette-tertiary50: #848484;
+  --md-ref-palette-tertiary60: #9f9f9f;
+  --md-ref-palette-tertiary70: #bebebe;
+  --md-ref-palette-tertiary80: #d9d9d9;
+  --md-ref-palette-tertiary90: #f4f4f4;
+  --md-ref-palette-tertiary95: #fcfcfc;
+  --md-ref-palette-tertiary98: #f6f6f6;
+  --md-ref-palette-tertiary99: #fbfbfb;
+  --md-ref-palette-tertiary100: #ffffff;
+  /* neutral */
+  --md-ref-palette-neutral0: #000000;
+  --md-ref-palette-neutral10: #262626;
+  --md-ref-palette-neutral20: #3b3b3b;
+  --md-ref-palette-neutral25: #464545;
+  --md-ref-palette-neutral30: #565656;
+  --md-ref-palette-neutral35: #5f5e5e;
+  --md-ref-palette-neutral40: #6b6b6b;
+  --md-ref-palette-neutral50: #848484;
+  --md-ref-palette-neutral60: #9f9f9f;
+  --md-ref-palette-neutral70: #bebebe;
+  --md-ref-palette-neutral80: #d9d9d9;
+  --md-ref-palette-neutral90: #f4f4f4;
+  --md-ref-palette-neutral95: #fcfcfc;
+  --md-ref-palette-neutral98: #f6f6f6;
+  --md-ref-palette-neutral99: #fbfbfb;
+  --md-ref-palette-neutral100: #ffffff;
+  /* neutral-variant */
+  --md-ref-palette-neutral-variant0: #000000;
+  --md-ref-palette-neutral-variant10: #262626;
+  --md-ref-palette-neutral-variant20: #3b3b3b;
+  --md-ref-palette-neutral-variant25: #464545;
+  --md-ref-palette-neutral-variant30: #565656;
+  --md-ref-palette-neutral-variant35: #5f5e5e;
+  --md-ref-palette-neutral-variant40: #6b6b6b;
+  --md-ref-palette-neutral-variant50: #848484;
+  --md-ref-palette-neutral-variant60: #9f9f9f;
+  --md-ref-palette-neutral-variant70: #bebebe;
+  --md-ref-palette-neutral-variant80: #d9d9d9;
+  --md-ref-palette-neutral-variant90: #f4f4f4;
+  --md-ref-palette-neutral-variant95: #fcfcfc;
+  --md-ref-palette-neutral-variant98: #f6f6f6;
+  --md-ref-palette-neutral-variant99: #fbfbfb;
+  --md-ref-palette-neutral-variant100: #ffffff;
+  /* error */
+  --md-ref-palette-error0: #000000;
+  --md-ref-palette-error10: #410002;
+  --md-ref-palette-error20: #690005;
+  --md-ref-palette-error25: #7e0007;
+  --md-ref-palette-error30: #93000a;
+  --md-ref-palette-error35: #a80710;
+  --md-ref-palette-error40: #ba1a1a;
+  --md-ref-palette-error50: #de3730;
+  --md-ref-palette-error60: #ff5449;
+  --md-ref-palette-error70: #ff897d;
+  --md-ref-palette-error80: #ffb4ab;
+  --md-ref-palette-error90: #ffdad6;
+  --md-ref-palette-error95: #ffedea;
+  --md-ref-palette-error98: #fff8f7;
+  --md-ref-palette-error99: #fffbff;
+  --md-ref-palette-error100: #ffffff;
+--md-ref-palette-black: #000000ff;
+--md-ref-palette-white: #ffffffff;
+}
