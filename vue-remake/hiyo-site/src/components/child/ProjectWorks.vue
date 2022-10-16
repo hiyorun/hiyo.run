@@ -22,7 +22,7 @@ function getRndInteger(min, max) {
 }
 </script>
 <template>
-  <div class="hi-flex hi-photo-grid hi-flex-justify-center">
+  <div class="hi-flex hi-photo-grid hi-justify-center">
     <img
       v-for="image in imageArr"
       :key="image.id"

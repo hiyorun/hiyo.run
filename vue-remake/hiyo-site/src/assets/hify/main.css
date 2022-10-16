@@ -1,0 +1,232 @@
+.hi-checkmarkcontainer {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.hi-checkmarkcontainer,
+.hi-checkmarkcontainer * {
+  cursor: pointer;
+}
+
+.hi-checkmarkcontainer:hover {
+  background-color: var(--md-sys-color-surface-variant);
+}
+
+.hi-checkmarks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--md-sys-color-on-surface-variant);
+  border-radius: 50%;
+  -webkit-appearance: none;
+  position: relative;
+  margin: 0;
+}
+
+.hi-checkmarks:checked {
+  background-color: var(--md-sys-color-primary);
+  border: none;
+}
+.hi-checkmarks:before,
+.hi-checkmarks:checked:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 20px;
+  text-align: center;
+}
+
+.hi-checkminus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2px;
+  width: 12px;
+  background-color: var(--md-sys-color-on-surface-variant);
+}
+
+.hi-checkmarks:hover ~ .hi-checkminus {
+  background-color: var(--md-sys-color-on-surface-variant);
+}
+
+.hi-checkmarks:active ~ .hi-checkminus {
+  background-color: var(--md-sys-color-on-primary);
+}
+
+.hi-checkmarks:checked ~ .hi-checkminus {
+  background-color: var(--md-sys-color-on-primary);
+}
+
+.hi-checkminus:after {
+  content: "";
+  position: absolute;
+}
+
+.hi-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--md-sys-color-surface);
+}
+
+.hi-table td {
+  padding: 8px;
+  border-left: 1px solid var(--md-sys-color-surface-variant);
+  border-top: 1px solid var(--md-sys-color-surface-variant);
+}
+
+.hi-title-bar {
+  height: 64px;
+  padding: 0 16px;
+  width: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hi-btn {
+  padding: 0 24px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.hi-btn-fill {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.hi-btn-fill:hover {
+  filter: drop-shadow(0 0 var(--md-sys-elevation-level2) #0007);
+}
+
+.hi-btn-fill:active {
+  filter: drop-shadow(0 0 var(--md-sys-elevation-level1) #0007);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+}
+
+.hi-nav-bar,
+.hi-nav-rail {
+  position:absolute;
+  display: flex;
+  justify-content: center;
+  font-size: 0.8em;
+}
+
+.hi-nav-bar {
+  position: fixed;
+  flex-direction: row;
+  justify-content: space-evenly;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.hi-nav-bar > .hi-nav-btn {
+  flex-basis: 56px;
+  z-index: 100;
+}
+
+.hi-nav-rail {
+  flex-direction: column;
+  height: 100vh;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.hi-nav-rail .hi-nav-btn {
+  margin-bottom: 12px;
+  z-index: 100;
+}
+
+.hi-nav-rail .hi-nav-btn-icon {
+  margin-bottom: 4px;
+}
+
+.hi-nav-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface);
+  height: 56px;
+  cursor: pointer;
+}
+
+.hi-nav-btn-active .hi-nav-btn-icon {
+  width: 56px;
+  color: var(--md-sys-color-on-secondary);
+  background-color: var(--md-sys-color-secondary);
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 20;
+}
+
+.hi-nav-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 32px;
+  border-radius: 16px;
+  font-size: 1.5em;
+}
+
+.hi-photo-grid {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.hi-photo-grid > img {
+  margin: 12px 0 0 12px;
+  max-height: 300px;
+  max-width: calc(100% - 24px);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 0 5px #0003;
+}
+
+.hi-flex {
+  display: flex;
+}
+
+.hi-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.hi-justify-center {
+  justify-content: center;
+}
+
+.hi-align-center {
+  align-items: center;
+}
+
+.hi-flex-row {
+  flex-direction: row;
+}
+
+.hi-flex-column {
+  flex-direction: column;
+}
+
+.hi-flex-column-rev {
+  flex-direction: column-reverse;
+}
+
+.hi-height-100 {
+  height: 100vh;
+}

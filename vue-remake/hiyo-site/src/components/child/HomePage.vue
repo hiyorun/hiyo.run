@@ -16,7 +16,7 @@ const logoWidth = computed(() => {
 });
 </script>
 <template>
-  <div class="hi-flex hi-flex-column hi-flex-align-item-center">
+  <div class="hi-flex hi-flex-column hi-align-center hi-justify-center">
     <div>
       <video autoplay class="white-imgs" :style="logoWidth">
         <source src="../../assets/imgs/title.webm" type="video/webm" />
