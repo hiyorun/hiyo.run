@@ -1,5 +1,8 @@
 .dots-pattern {
-  background-image: radial-gradient(rgba(255,255,255, 0.1) 9%, transparent 9%);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 9%,
+    transparent 9%
+  );
   background-size: 5vmin 5vmin;
   height: 100%;
   width: 100vw;
@@ -11,16 +14,26 @@
 }
 
 .hi-nav-rail:hover ~ .dots-pattern {
-  background-size: 4.2vmin 4.2vmin;
+  background-size: 4.5vmin 4.5vmin;
 }
 
-.content{
-  transition: transform 500ms ease;
+.content {
+  transition: transform 500ms ease
+}
+
+.site-content{
+  transition:margin 500ms ease;
 }
 
 .hi-nav-rail:hover ~ .content-parent > .content {
-  transform:scale(.9);
+  transform: scale(0.8);
+  padding-bottom: 200px;
   transition: transform 500ms ease;
+}
+
+.hi-nav-rail:hover ~ .content-parent .site-content {
+  margin-bottom: 75px;
+  transition: margin 500ms ease;
 }
 
 @media (prefers-color-scheme: light) {

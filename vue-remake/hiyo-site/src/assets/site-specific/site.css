@@ -19,8 +19,39 @@
   z-index: 1000;
 
   transition: opacity 500ms ease;
-  
-  display:flex;
+
+  display: flex;
 
   background-color: white;
+}
+
+.loading-bar {
+  background: rgba(0, 0, 0, 75%);
+  transform-origin: 0% 50%;
+  width: 0%;
+  height: 100%;
+  transition: 100ms ease;
+}
+
+.loading-bar-container {
+  border-radius: 2px;
+  overflow: hidden;
+  width: 200px;
+  height: 4px;
+  background: rgba(0, 0, 0, 10%);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .loading-bar {
+    background: rgba(255,255,255, 75%);
+  }
+  
+  .loading-bar-container {
+    background: rgba(255,255,255, 10%);
+  }
+  .loading-screen {
+    background-color: rgba(0,0,0);
+    color:white
+  }
 }

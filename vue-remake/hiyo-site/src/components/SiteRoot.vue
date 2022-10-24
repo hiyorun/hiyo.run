@@ -70,6 +70,13 @@ onMounted(() => {
   // window.addEventListener("deviceorientation", (ev) => {
 
   // });
+  window.addEventListener("resize", () => {
+    center.x = window.innerWidth / 2;
+    contentParallax.transformOrigin = `${center.x}px ${
+      innerHeight / 2 + contentContainer.value.scrollTop
+    }px`;
+    parallaxEffect();
+  });
   patternPos.backgroundPosition = `${center.x}px ${center.y}px`;
   contentContainer.value.addEventListener("scroll", () => {
     // console.log(contentContainer.value.scrollTop);m
@@ -84,11 +91,6 @@ onMounted(() => {
     pointer.y = ev.clientY;
     parallaxEffect();
   });
-  fetch(
-    "https://cdn.jsdelivr.net/gh/hiyorun/hiyorun.github.io@prompts/prompts.json"
-  )
-    .then((response) => response.json())
-    .then((data) => console.log(data));
 });
 
 onUnmounted(() => {
@@ -115,9 +117,9 @@ function parallaxEffect() {
   patternPos.backgroundPosition = `${
     center.x + (pointer.x - center.x) / 30
   }px ${center.y + (pointer.y - center.y) / 30}px`;
-  contentParallax.top = ((center.y - pointer.y) * -1) / 15 + "px";
+  contentParallax.top = ((innerHeight / 2 - pointer.y) * -1) / 15 + "px";
   contentParallax.left = ((center.x - pointer.x) * -1) / 15 + "px";
-  padding.paddingBottom = (pointer.y / innerHeight) * -100 + 100 + "px";
+  padding.paddingBottom = (pointer.y / innerHeight) * -75 + 75 + "px";
 }
 </script>
 <template>
@@ -161,7 +163,7 @@ function parallaxEffect() {
           :style="contentParallax"
         >
           <LoadingScreen />
-          <SiteContent :style="padding" />
+          <SiteContent class="site-content" :style="padding" />
         </div>
       </div>
       <div class="dots-pattern" :style="patternPos"></div>

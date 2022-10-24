@@ -3,9 +3,11 @@ import { computed, onMounted, ref, watchEffect } from "vue";
 import { storeToRefs } from "pinia";
 import { hiBreakpoints } from "@/reuseLogic/mobile";
 import { loadingStates } from "@/states/load.js";
+import { prompt as promptState } from "@/states/prompts.js";
 
 const loadState = loadingStates();
-const { projects, title } = storeToRefs(loadState);
+const { prompt } = storeToRefs(promptState());
+const { projects, title } = storeToRefs(loadingStates());
 const { screenType } = hiBreakpoints();
 
 const logoWidth = computed(() => {
@@ -41,5 +43,6 @@ onMounted(() => {
         Your browser does not support the video tag.
       </video>
     </div>
+    <span>"{{ prompt }}"</span>
   </div>
 </template>
