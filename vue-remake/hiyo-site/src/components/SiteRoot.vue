@@ -1,21 +1,42 @@
 <script setup>
-// Component imports
-import HomePage from "./child/HomePage.vue";
-
-import { onMounted, ref, reactive, watchEffect } from "vue";
+// Imports
+import { onMounted, ref, reactive, watchEffect, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
-import { hiBreakpoints } from "../reuseLogic/mobile";
+import { hiBreakpoints } from "@/reuseLogic/mobile";
+import { loadingStates } from "@/states/load.js";
+import SiteContent from "./child/SiteContent.vue";
+import LoadingScreen from "./err-load/LoadingScreen.vue";
 
 // Val from imports
 const { innerWidth, innerHeight, screenType } = hiBreakpoints();
 const router = useRouter();
 const root = ref(null);
-const dotsPattern = ref(null);
-let xBefore = -1;
-let yBefore = -1;
+const contentContainer = ref(null);
+const loadState = loadingStates();
+
 let patternPos = reactive({
   backgroundPosition: "50% 1%",
 });
+
+let center = {
+  x: innerWidth / 2,
+  y: innerHeight / 2,
+};
+
+let contentParallax = reactive({
+  top: "0px",
+  left: "0px",
+  transformOrigin: `${center.x}px ${center.y}px`,
+});
+
+let padding = reactive({
+  paddingBottom: "0px",
+});
+
+let pointer = {
+  x: 0,
+  y: 0,
+};
 
 // Local var
 const railItems = ref([
@@ -39,28 +60,44 @@ const railItems = ref([
   },
 ]);
 
-// Vue directives
-
-onMounted(() => {
-  // window.addEventListener("deviceorientation", (ev) => {
-
-  // });
-  root.value.addEventListener("pointermove", (ev) => {
-    let pointerX = ev.clientX;
-    let pointerY = ev.clientY;
-    let x = pointerX / innerWidth;
-    let y = pointerY / innerHeight;
-    parallaxEffect(x, y);
-  });
-});
-
+// Vue
 watchEffect(() => {
   let currentRoute = router.currentRoute.value.path;
   setActive(currentRoute);
 });
 
-// Functions
+onMounted(() => {
+  // window.addEventListener("deviceorientation", (ev) => {
 
+  // });
+  patternPos.backgroundPosition = `${center.x}px ${center.y}px`;
+  contentContainer.value.addEventListener("scroll", () => {
+    // console.log(contentContainer.value.scrollTop);m
+    center.y = innerHeight / 2 - contentContainer.value.scrollTop / 10;
+    contentParallax.transformOrigin = `${center.x}px ${
+      innerHeight / 2 + contentContainer.value.scrollTop
+    }px`;
+    parallaxEffect();
+  });
+  root.value.addEventListener("pointermove", (ev) => {
+    pointer.x = ev.clientX;
+    pointer.y = ev.clientY;
+    parallaxEffect();
+  });
+  fetch(
+    "https://cdn.jsdelivr.net/gh/hiyorun/hiyorun.github.io@prompts/prompts.json"
+  )
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+});
+
+onUnmounted(() => {
+  root.value.removeEventListener("pointermove");
+  contentContainer.value.removeEventListener("scroll");
+  loadState.$reset;
+});
+
+// Functions
 function setActive(path) {
   railItems.value.forEach((item, index) => {
     if (item.name === path) {
@@ -71,19 +108,16 @@ function setActive(path) {
   });
 }
 
-function parallaxEffect(x, y) {
-  // if (xBefore === -1 && yBefore === -1) {
-  //   xBefore = x;
-  //   yBefore = y;
-  //   return;
-  // }
-
-  let xIncrement = x;
-  let yIncrement = y;
-  xBefore = x;
-  yBefore = y;
-  console.log(xIncrement, yIncrement);
-  patternPos.backgroundPosition = `${50 + xIncrement}px ${50 + yIncrement}px`;
+function parallaxEffect() {
+  // console.log("params", x, y);
+  // console.log("backgroundPos", patternPos.backgroundPosition);
+  // console.log("client size", innerHeight, innerWidth);
+  patternPos.backgroundPosition = `${
+    center.x + (pointer.x - center.x) / 30
+  }px ${center.y + (pointer.y - center.y) / 30}px`;
+  contentParallax.top = ((center.y - pointer.y) * -1) / 15 + "px";
+  contentParallax.left = ((center.x - pointer.x) * -1) / 15 + "px";
+  padding.paddingBottom = (pointer.y / innerHeight) * -100 + 100 + "px";
 }
 </script>
 <template>
@@ -110,10 +144,27 @@ function parallaxEffect(x, y) {
           {{ item.name }}
         </button>
       </div>
-      <div>
-        <HomePage class="content" />
+      <div
+        ref="contentContainer"
+        style="
+          overflow-y: scroll;
+          overflow-x: hidden;
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+        "
+        class="hi-flex hi-flex-column content-parent"
+      >
+        <div
+          style="position: absolute"
+          class="content"
+          :style="contentParallax"
+        >
+          <LoadingScreen />
+          <SiteContent :style="padding" />
+        </div>
       </div>
-      <div ref="dotsPattern" class="dots-pattern" :style="patternPos"></div>
+      <div class="dots-pattern" :style="patternPos"></div>
     </div>
   </div>
 </template>

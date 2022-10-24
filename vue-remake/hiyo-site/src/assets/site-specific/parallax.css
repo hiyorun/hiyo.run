@@ -1,18 +1,26 @@
 .dots-pattern {
   background-image: radial-gradient(rgba(255,255,255, 0.1) 9%, transparent 9%);
   background-size: 5vmin 5vmin;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   left: 0px;
   position: absolute;
   top: 0px;
-  transition: opacity 800ms ease, background-size 800ms ease,
-    background-position 800ms ease;
+  transition: opacity 500ms ease, background-size 500ms ease;
   z-index: -100;
 }
 
 .hi-nav-rail:hover ~ .dots-pattern {
-  background-size: 4.5vmin 4.5vmin;
+  background-size: 4.2vmin 4.2vmin;
+}
+
+.content{
+  transition: transform 500ms ease;
+}
+
+.hi-nav-rail:hover ~ .content-parent > .content {
+  transform:scale(.9);
+  transition: transform 500ms ease;
 }
 
 @media (prefers-color-scheme: light) {

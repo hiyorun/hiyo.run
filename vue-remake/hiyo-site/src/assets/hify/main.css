@@ -120,7 +120,7 @@
 
 .hi-nav-bar,
 .hi-nav-rail {
-  position:absolute;
+  position: absolute;
   display: flex;
   justify-content: center;
   font-size: 0.8em;
@@ -203,18 +203,6 @@
   display: flex;
 }
 
-.hi-flex-wrap {
-  flex-wrap: wrap;
-}
-
-.hi-justify-center {
-  justify-content: center;
-}
-
-.hi-align-center {
-  align-items: center;
-}
-
 .hi-flex-row {
   flex-direction: row;
 }
@@ -225,6 +213,18 @@
 
 .hi-flex-column-rev {
   flex-direction: column-reverse;
+}
+
+.hi-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.hi-justify-center {
+  justify-content: center;
+}
+
+.hi-align-center {
+  align-items: center;
 }
 
 .hi-height-100 {

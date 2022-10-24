@@ -4,12 +4,11 @@
 @import "./hify/main.css";
 @import "./site-specific/site.css";
 @import "./site-specific/parallax.css";
-@import "./md3/baseline.css";
 @import "./spinner.css";
 
-* {
+/* * {
   transition: 0.3s;
-}
+} */
 
 *:not(.material-symbols-outlined) {
   font-family: "Quicksand", sans-serif !important;

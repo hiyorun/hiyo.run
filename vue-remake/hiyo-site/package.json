@@ -1,14 +1,14 @@
 {
   "name": "hiyo-site",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --port 4173",
+    "preview": "vite preview --port 4173 --host",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "firebase": "^9.10.0",
+    "pinia": "^2.0.23",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
