@@ -38,6 +38,11 @@ let pointer = {
   y: 0,
 };
 
+let prevOrient = reactive({
+  beta: 0,
+  gamma: 0,
+});
+
 // Local var
 const railItems = ref([
   {
@@ -67,39 +72,69 @@ watchEffect(() => {
 });
 
 onMounted(() => {
-  // window.addEventListener("deviceorientation", (ev) => {
+  window.addEventListener("deviceorientation", rotationParallax);
 
-  // });
-  window.addEventListener("resize", () => {
-    center.x = window.innerWidth / 2;
-    contentParallax.transformOrigin = `${center.x}px ${
-      innerHeight / 2 + contentContainer.value.scrollTop
-    }px`;
-    parallaxEffect();
-  });
+  window.addEventListener("resize", onResizeWindow);
+
   patternPos.backgroundPosition = `${center.x}px ${center.y}px`;
-  contentContainer.value.addEventListener("scroll", () => {
-    // console.log(contentContainer.value.scrollTop);m
-    center.y = innerHeight / 2 - contentContainer.value.scrollTop / 10;
-    contentParallax.transformOrigin = `${center.x}px ${
-      innerHeight / 2 + contentContainer.value.scrollTop
-    }px`;
-    parallaxEffect();
-  });
-  root.value.addEventListener("pointermove", (ev) => {
-    pointer.x = ev.clientX;
-    pointer.y = ev.clientY;
-    parallaxEffect();
-  });
+  contentContainer.value.addEventListener("scroll", onScroll);
+
+  root.value.addEventListener("pointermove", onPointerMove);
 });
 
 onUnmounted(() => {
-  root.value.removeEventListener("pointermove");
-  contentContainer.value.removeEventListener("scroll");
+  // window.removeEventListener("deviceorientation", rotationParallax);
+  // window.removeEventListener("resize", onResizeWindow);
+  // contentContainer.value.removeEventListener("scroll", onScroll);
+  // root.value.removeEventListener("mousemove", onPointerMove);
   loadState.$reset;
 });
 
 // Functions
+function rotationParallax(ev) {
+  let currentOrient = {
+    beta: Math.floor(ev.beta),
+    gamma: Math.floor(ev.gamma),
+  };
+  if (prevOrient.beta === 0 && prevOrient.gamma === 0) {
+    prevOrient = currentOrient;
+  }
+  if (
+    currentOrient.beta !== prevOrient.beta ||
+    currentOrient.gamma !== prevOrient.gamma
+  ) {
+    console.log(currentOrient);
+    prevOrient = currentOrient;
+  }
+}
+
+function onResizeWindow() {
+  center.x = window.innerWidth / 2;
+  contentParallax.transformOrigin = `${center.x}px ${
+    innerHeight / 2 + contentContainer.value.scrollTop
+  }px`;
+  parallaxEffect();
+}
+
+function onScroll() {
+  // console.log(contentContainer.value.scrollTop);
+  center.y = innerHeight / 2 - contentContainer.value.scrollTop / 10;
+  contentParallax.transformOrigin = `${innerWidth / 2}px ${
+    innerHeight / 2 + contentContainer.value.scrollTop
+  }px`;
+  patternPos.backgroundPosition = `${
+    center.x + (pointer.x - center.x) / 30
+  }px ${center.y + (pointer.y - center.y) / 30}px`;
+}
+
+function onPointerMove(ev) {
+  if (ev.pointerType !== "touch") {
+    pointer.x = ev.clientX;
+    pointer.y = ev.clientY;
+    parallaxEffect();
+  }
+}
+
 function setActive(path) {
   railItems.value.forEach((item, index) => {
     if (item.name === path) {
@@ -140,9 +175,6 @@ function parallaxEffect() {
           :key="index"
           @click="setActive(item.name)"
         >
-          <span class="material-symbols-outl<HomePage />ined hi-nav-btn-icon">
-            {{ item.icon }}
-          </span>
           {{ item.name }}
         </button>
       </div>

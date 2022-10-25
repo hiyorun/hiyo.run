@@ -17,7 +17,7 @@ let showLoading = reactive({
 
 onMounted(() => {
   fetch(
-    "https://raw.githubusercontent.com/hiyorun/hiyorun.github.io/prompts/prompts.json"
+    "https://raw.githubusercontent.com/hiyorun/site-prompts/main/prompts.json"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -27,7 +27,6 @@ onMounted(() => {
     .finally(() => {
       let Rand = Math.floor(Math.random() * prompts.length);
       prompt.value = prompts[Rand];
-      console.log(prompt, prompts, Rand);
     });
 });
 

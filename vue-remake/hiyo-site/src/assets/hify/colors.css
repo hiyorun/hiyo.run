@@ -1,0 +1,12 @@
+:root {
+  --hi-background: hsl(0, 0%, 10%);
+  --hi-foreground: hsl(0, 0%, 100%);
+  --hi-neutral: hsl(0, 0%, 30%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --hi-background: hsl(0, 0%, 100%);
+    --hi-foreground: hsl(0, 0%, 25%);
+  }
+}

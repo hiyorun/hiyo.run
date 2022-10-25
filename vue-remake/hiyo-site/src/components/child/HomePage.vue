@@ -5,6 +5,7 @@ import { hiBreakpoints } from "@/reuseLogic/mobile";
 import { loadingStates } from "@/states/load.js";
 import { prompt as promptState } from "@/states/prompts.js";
 
+const titleAnim = ref(null);
 const loadState = loadingStates();
 const { prompt } = storeToRefs(promptState());
 const { projects, title } = storeToRefs(loadingStates());
@@ -20,8 +21,6 @@ const logoWidth = computed(() => {
       return { width: "800px" };
   }
 });
-
-let titleAnim = ref(null);
 
 watchEffect(() => {
   if (projects.value && title.value) {
