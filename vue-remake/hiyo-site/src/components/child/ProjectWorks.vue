@@ -16,6 +16,8 @@ onMounted(() => {
       getRndInteger(100, 300);
     imageArr.push(structImg);
   }
+  // imageArr.push("lol");
+  // imgLoaded();
 });
 
 function imgLoaded() {
@@ -28,11 +30,8 @@ function imgLoaded() {
     class="hi-flex hi-photo-grid hi-justify-center"
     style="padding: 75px 0px"
   >
-    <img
-      v-for="(image, index) in imageArr"
-      :key="index"
-      :src="image"
-      @load="imgLoaded()"
-    />
+    <div v-for="(image, index) in imageArr" :key="index">
+      <img :src="image" @load="imgLoaded()" />
+    </div>
   </div>
 </template>

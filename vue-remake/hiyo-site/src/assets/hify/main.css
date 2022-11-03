@@ -184,13 +184,18 @@
   width: 100%;
 }
 
-.hi-photo-grid > img {
-  margin: 12px 0 0 12px;
+.hi-photo-grid div {
+  margin: 16px 0 0 16px;
   max-height: 300px;
-  max-width: calc(100% - 24px);
+  border-radius: 16px;
+  box-shadow: 0 0 5px var(--hi-shadow);
+}
+
+.hi-photo-grid img {
+  height: 100%;
+  width:100%;
   object-fit: cover;
   border-radius: 16px;
-  box-shadow: 0 0 5px #0003;
 }
 
 .hi-flex {

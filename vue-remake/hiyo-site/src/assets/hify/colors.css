@@ -2,11 +2,13 @@
   --hi-background: hsl(0, 0%, 10%);
   --hi-foreground: hsl(0, 0%, 100%);
   --hi-neutral: hsl(0, 0%, 30%);
+  --hi-shadow:hsla(0, 0%, 100%, 0.2);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --hi-background: hsl(0, 0%, 100%);
     --hi-foreground: hsl(0, 0%, 25%);
+    --hi-shadow:hsla(0, 0%, 0%, 0.2);
   }
 }

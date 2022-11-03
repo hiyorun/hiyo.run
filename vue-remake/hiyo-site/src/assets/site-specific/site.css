@@ -1,4 +1,5 @@
 .content {
+  position: relative;
   width: 100vw;
   height: 100vh;
 }
@@ -41,17 +42,29 @@
   background: rgba(0, 0, 0, 10%);
 }
 
+.hi-photo-grid img {
+  transition: 0.2s ease;
+}
+
+.hi-photo-grid img:hover {
+  transition: .2s ease;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #000f;
+}
 
 @media (prefers-color-scheme: dark) {
   .loading-bar {
-    background: rgba(255,255,255, 75%);
+    background: rgba(255, 255, 255, 75%);
   }
-  
+
   .loading-bar-container {
-    background: rgba(255,255,255, 10%);
+    background: rgba(255, 255, 255, 10%);
   }
   .loading-screen {
-    background-color: rgba(0,0,0);
-    color:white
+    background-color: rgba(0, 0, 0);
+    color: white;
+  }
+  .hi-photo-grid img:hover {
+    box-shadow: 0 0 10px #ffff;
   }
 }

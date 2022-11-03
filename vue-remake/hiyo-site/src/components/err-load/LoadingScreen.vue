@@ -46,10 +46,16 @@ watchEffect(() => {
   >
     <!-- <span>{{ loadingProgress }}%</span> -->
     <h4>
-      <i>"{{ prompt }}"</i>
+      <p class="center">"{{ prompt }}"</p>
     </h4>
     <div class="loading-bar-container">
       <div class="loading-bar" :style="{ width: loadingProgress + '%' }"></div>
     </div>
   </div>
 </template>
+<style scoped>
+.center {
+  padding: 0 3em;
+  text-align: center;
+}
+</style>

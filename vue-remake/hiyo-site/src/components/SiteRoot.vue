@@ -43,6 +43,18 @@ let prevOrient = reactive({
   gamma: 0,
 });
 
+let currentOrient = {
+  beta: 0,
+  gamma: 0,
+};
+
+let relativeOrient = reactive({
+  beta: 0,
+  betaCenter: 0,
+  gamma: 0,
+  gammaCenter: 0,
+});
+
 // Local var
 const railItems = ref([
   {
@@ -92,20 +104,56 @@ onUnmounted(() => {
 
 // Functions
 function rotationParallax(ev) {
-  let currentOrient = {
+  currentOrient = {
     beta: Math.floor(ev.beta),
     gamma: Math.floor(ev.gamma),
   };
   if (prevOrient.beta === 0 && prevOrient.gamma === 0) {
     prevOrient = currentOrient;
+    relativeOrient = {
+      beta: currentOrient.beta,
+      betaCenter: currentOrient.beta,
+      gamma: currentOrient.gamma,
+      gammaCenter: currentOrient.gamma,
+    };
   }
   if (
     currentOrient.beta !== prevOrient.beta ||
     currentOrient.gamma !== prevOrient.gamma
   ) {
-    console.log(currentOrient);
+    if (currentOrient.beta - relativeOrient.betaCenter >= 40) {
+      relativeOrient.betaCenter = currentOrient.beta - 40;
+    }
+    if (relativeOrient.betaCenter - currentOrient.beta >= 40) {
+      relativeOrient.betaCenter = currentOrient.beta + 40;
+    }
+    if (currentOrient.gamma - relativeOrient.gammaCenter >= 40) {
+      relativeOrient.gammaCenter = currentOrient.gamma - 40;
+    }
+    if (relativeOrient.gammaCenter - currentOrient.gamma >= 40) {
+      relativeOrient.gammaCenter = currentOrient.gamma + 40;
+    }
+    // console.log(currentOrient, relativeOrient);
+
+    rotParallaxMove();
+
     prevOrient = currentOrient;
   }
+}
+
+function rotParallaxMove() {
+  let mapBetaY =
+    ((currentOrient.beta - (relativeOrient.betaCenter - 40)) / 80) *
+    innerHeight;
+  let mapGammaX =
+    ((currentOrient.gamma - (relativeOrient.gammaCenter - 40)) / 80) *
+    innerWidth;
+  patternPos.backgroundPosition = `${
+    center.x + (mapGammaX - center.x) / 15
+  }px ${center.y + (mapBetaY - center.y) / 15}px`;
+  contentParallax.top = ((innerHeight / 2 - mapBetaY) * -1) / 7.5 + "px";
+  contentParallax.left = ((center.x - mapGammaX) * -1) / 7.5 + "px";
+  padding.paddingBottom = (mapBetaY / innerHeight) * -75 + 75 + "px";
 }
 
 function onResizeWindow() {
@@ -123,8 +171,8 @@ function onScroll() {
     innerHeight / 2 + contentContainer.value.scrollTop
   }px`;
   patternPos.backgroundPosition = `${
-    center.x + (pointer.x - center.x) / 30
-  }px ${center.y + (pointer.y - center.y) / 30}px`;
+    center.x + (pointer.x - center.x) / 60
+  }px ${center.y + (pointer.y - center.y) / 60}px`;
 }
 
 function onPointerMove(ev) {
@@ -150,10 +198,10 @@ function parallaxEffect() {
   // console.log("backgroundPos", patternPos.backgroundPosition);
   // console.log("client size", innerHeight, innerWidth);
   patternPos.backgroundPosition = `${
-    center.x + (pointer.x - center.x) / 30
-  }px ${center.y + (pointer.y - center.y) / 30}px`;
-  contentParallax.top = ((innerHeight / 2 - pointer.y) * -1) / 15 + "px";
-  contentParallax.left = ((center.x - pointer.x) * -1) / 15 + "px";
+    center.x + (pointer.x - center.x) / 60
+  }px ${center.y + (pointer.y - center.y) / 60}px`;
+  contentParallax.top = ((innerHeight / 2 - pointer.y) * -1) / 30 + "px";
+  contentParallax.left = ((center.x - pointer.x) * -1) / 30 + "px";
   padding.paddingBottom = (pointer.y / innerHeight) * -75 + 75 + "px";
 }
 </script>
