@@ -37,7 +37,7 @@ const logoWidth = computed(() => {
 
 watchEffect(() => {
   if (projects.value && title.value) {
-    titleAnim.value.play();
+    console.log
     setTimeout(() => {
       convertArrow();
     }, 3000);
@@ -47,6 +47,7 @@ watchEffect(() => {
 onMounted(() => {
   titleAnim.value.addEventListener("loadeddata", () => {
     loadState.$patch({ title: true });
+    titleAnim.value.play();
   });
 });
 

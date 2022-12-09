@@ -105,9 +105,10 @@ onUnmounted(() => {
 // Functions
 function rotationParallax(ev) {
   currentOrient = {
-    beta: Math.floor(ev.beta),
-    gamma: Math.floor(ev.gamma),
+    beta: Math.floor(ev.beta) + 180,
+    gamma: Math.floor(ev.gamma) + 180,
   };
+
   if (prevOrient.beta === 0 && prevOrient.gamma === 0) {
     prevOrient = currentOrient;
     relativeOrient = {
@@ -198,8 +199,8 @@ function parallaxEffect() {
   // console.log("backgroundPos", patternPos.backgroundPosition);
   // console.log("client size", innerHeight, innerWidth);
   patternPos.backgroundPosition = `${
-    center.x + (pointer.x - center.x) / 60
-  }px ${center.y + (pointer.y - center.y) / 60}px`;
+    center.x + (pointer.x - center.x) / 150
+  }px ${center.y + (pointer.y - center.y) / 150}px`;
   contentParallax.top = ((innerHeight / 2 - pointer.y) * -1) / 30 + "px";
   contentParallax.left = ((center.x - pointer.x) * -1) / 30 + "px";
   padding.paddingBottom = (pointer.y / innerHeight) * -75 + 75 + "px";

@@ -31,7 +31,12 @@ function imgLoaded() {
     style="padding: 75px 0px"
   >
     <div v-for="(image, index) in imageArr" :key="index">
-      <img :src="image" @load="imgLoaded()" />
+      <img :src="image" @load="imgLoaded()" class="gallery"/>
     </div>
   </div>
 </template>
+<style scoped>
+  .gallery{
+    min-height: 30vh;
+  }
+</style>
