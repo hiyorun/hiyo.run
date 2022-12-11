@@ -5,7 +5,7 @@ import { loadingStates } from "@/states/load.js";
 import { hiBreakpoints } from "@/reuseLogic/mobile";
 
 // Val from imports
-const { innerWidth, innerHeight } = hiBreakpoints()
+const { clientSize } = hiBreakpoints()
 
 let loadState = loadingStates(),
   imageArr = reactive([]),
@@ -37,10 +37,9 @@ onUnmounted(() => {
     <div v-for="(image, index) in imageArr" :key="index">
       <img ref="images" :style="{
         objectPosition:
-          `${(innerWidth / 7 * ((movementPercentage.x - 50) / 100))/ -10}px
-              ${(innerHeight / 7 * ((movementPercentage.y - 50) / 100))/ -10}px`
-      }" :src="image" @load="imgLoaded()"
-        class="gallery" />
+          `${(clientSize.width / 7 * ((movementPercentage.x - 50) / 100)) / -10}px
+                    ${(clientSize.height / 7 * ((movementPercentage.y - 50) / 100)) / -10}px`
+      }" :src="image" @load="imgLoaded()" class="gallery" />
     </div>
   </div>
 </template>

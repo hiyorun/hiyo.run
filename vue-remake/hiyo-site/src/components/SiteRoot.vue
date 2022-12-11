@@ -7,11 +7,12 @@ import { loadingStates } from "@/states/load.js";
 import SiteContent from "./child/SiteContent.vue";
 import LoadingScreen from "./err-load/LoadingScreen.vue";
 
-const { innerWidth, innerHeight, screenType } = hiBreakpoints()
+const { clientSize, screenType } = hiBreakpoints(),
+  loadState = loadingStates()
 
 let center = {
-  x: innerWidth / 2,
-  y: innerHeight / 2,
+  x: clientSize.width / 2,
+  y: clientSize.height / 2,
 },
 
   pointer = {
@@ -20,10 +21,8 @@ let center = {
   }
 
 // Val from imports
-
 const router = useRouter(),
   root = ref(null),
-  loadState = loadingStates(),
   contentContainer = ref(null),
   patternPos = reactive({
     backgroundPosition: "50% 1%",
@@ -90,7 +89,7 @@ provide('movement', movementPercentage)
 
 // Vue
 watchEffect(() => {
-  let currentRoute = router.currentRoute.value.path;
+  const currentRoute = router.currentRoute.value.path;
   setActive(currentRoute);
 });
 
@@ -101,7 +100,6 @@ onMounted(() => {
 
   patternPos.backgroundPosition = `${center.x}px ${center.y}px`;
 
-  console.log(contentContainer)
   contentContainer._value.addEventListener("scroll", onScroll);
 
   root.value.addEventListener("pointermove", onPointerMove);
@@ -163,11 +161,9 @@ function rotationParallax(ev) {
     }
     if (currentOrient.gamma - anchorOrient.gamma >= 40) {
       anchorOrient.gamma = currentOrient.gamma - 40;
-      console.log('5')
     }
     if (anchorOrient.gamma - currentOrient.gamma >= 40) {
       anchorOrient.gamma = currentOrient.gamma + 40;
-      console.log('6')
     }
     // console.log(currentOrient, anchorOrient);
 
@@ -181,31 +177,27 @@ function rotationParallax(ev) {
 function rotParallaxMove() {
   const mapBetaY =
     ((currentOrient.beta - (anchorOrient.beta - 40)) / 80) *
-    innerHeight,
+    clientSize.height,
     mapGammaX =
       ((currentOrient.gamma - (anchorOrient.gamma - 40)) / 80) *
-      innerWidth;
-  // patternPos.backgroundPosition = `${
-  //   center.x + (mapGammaX - center.x) / 40.125
-  // }px ${center.y + (mapBetaY - center.y) / 40.125}px`;
-  contentParallax.top = ((innerHeight / 2 - mapBetaY) * -1) / 7.5 + "px";
+      clientSize.width;
+  contentParallax.top = ((clientSize.height / 2 - mapBetaY) * -1) / 7.5 + "px";
   contentParallax.left = ((center.x - mapGammaX) * -1) / 7.5 + "px";
-  padding.paddingBottom = (mapBetaY / innerHeight) * -75 + 75 + "px";
-  movementPercentage.value.x = pointer.x / innerWidth * 100
-  movementPercentage.value.y = pointer.y / innerHeight * 100
+  padding.paddingBottom = (mapBetaY / clientSize.height) * -75 + 75 + "px";
+  movementPercentage.value.x = mapGammaX / clientSize.width * 100
+  movementPercentage.value.y = mapBetaY / clientSize.height * 100
 }
 
 function onResizeWindow() {
-  center.x = window.innerWidth / 2;
-  contentParallax.transformOrigin = `${center.x}px ${innerHeight / 2 + contentContainer._value.scrollTop
+  center.x = clientSize.width / 2;
+  contentParallax.transformOrigin = `${center.x}px ${clientSize.height / 2 + contentContainer._value.scrollTop
     }px`;
   parallaxEffect();
 }
 
 function onScroll() {
-  console.log(innerWidth / 2)
-  center.y = innerHeight / 2 - contentContainer._value.scrollTop / 10;
-  contentParallax.transformOrigin = `${innerWidth / 2}px ${innerHeight / 2 + contentContainer._value.scrollTop
+  center.y = clientSize.height / 2 - contentContainer._value.scrollTop / 10;
+  contentParallax.transformOrigin = `${clientSize.width / 2}px ${clientSize.height / 2 + contentContainer._value.scrollTop
     }px`;
   patternPos.backgroundPosition = `${center.x + (pointer.x - center.x) / 150
     }px ${center.y + (pointer.y - center.y) / 150}px`;
@@ -232,14 +224,14 @@ function setActive(path) {
 function parallaxEffect() {
   // console.log("params", x, y);
   // console.log("backgroundPos", patternPos.backgroundPosition);
-  // console.log("client size", innerHeight, innerWidth);
+  // console.log("client size", clientSize.height, clientSize.width);
   patternPos.backgroundPosition = `${center.x + (pointer.x - center.x) / 150
     }px ${center.y + (pointer.y - center.y) / 150}px`;
-  contentParallax.top = ((innerHeight / 2 - pointer.y) * -1) / 30 + "px";
+  contentParallax.top = ((clientSize.height / 2 - pointer.y) * -1) / 30 + "px";
   contentParallax.left = ((center.x - pointer.x) * -1) / 30 + "px";
-  padding.paddingBottom = (pointer.y / innerHeight) * -75 + 75 + "px";
-  movementPercentage.value.x = pointer.x / innerWidth * 100
-  movementPercentage.value.y = pointer.y / innerHeight * 100
+  padding.paddingBottom = (pointer.y / clientSize.height) * -75 + 75 + "px";
+  movementPercentage.value.x = pointer.x / clientSize.width * 100
+  movementPercentage.value.y = pointer.y / clientSize.height * 100
 }
 </script>
 <template>
