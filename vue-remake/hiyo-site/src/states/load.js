@@ -23,5 +23,11 @@ export const loadingStates = defineStore("isloading", {
         return;
       }
     },
+    resetCounter() {
+      this.projects = false
+      this.title = false
+      this.needToLoad = 0
+      this.doneLoading = 0
+    }
   },
 });

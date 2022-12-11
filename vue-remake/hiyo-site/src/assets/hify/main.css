@@ -189,6 +189,7 @@
   max-height: 300px;
   border-radius: 16px;
   box-shadow: 0 0 5px var(--hi-shadow);
+  overflow: hidden;
 }
 
 .hi-photo-grid img {

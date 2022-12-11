@@ -1,27 +1,38 @@
 <script setup>
 // Imports
-import { onMounted, ref, reactive, watchEffect, onUnmounted } from "vue";
+import { ref, onMounted, reactive, watchEffect, onUnmounted, provide } from "vue";
 import { useRouter } from "vue-router";
 import { hiBreakpoints } from "@/reuseLogic/mobile";
 import { loadingStates } from "@/states/load.js";
 import SiteContent from "./child/SiteContent.vue";
 import LoadingScreen from "./err-load/LoadingScreen.vue";
 
+const { innerWidth, innerHeight, screenType } = hiBreakpoints()
+
+let center = {
+  x: innerWidth / 2,
+  y: innerHeight / 2,
+},
+
+  pointer = {
+    x: 0,
+    y: 0,
+  }
+
 // Val from imports
-const { innerWidth, innerHeight, screenType } = hiBreakpoints(),
-  router = useRouter(),
+
+const router = useRouter(),
   root = ref(null),
+  loadState = loadingStates(),
   contentContainer = ref(null),
-  loadState = loadingStates();
+  patternPos = reactive({
+    backgroundPosition: "50% 1%",
+  }),
 
-let patternPos = reactive({
-  backgroundPosition: "50% 1%",
-}),
-
-  center = {
-    x: innerWidth / 2,
-    y: innerHeight / 2,
-  },
+  movementPercentage = ref({
+    x: 0,
+    y: 0,
+  }),
 
   contentParallax = reactive({
     top: "0px",
@@ -32,11 +43,6 @@ let patternPos = reactive({
   padding = reactive({
     paddingBottom: "0px",
   }),
-
-  pointer = {
-    x: 0,
-    y: 0,
-  },
 
   prevOrient = reactive({
     beta: 0,
@@ -56,29 +62,31 @@ let patternPos = reactive({
   statsForGeeks = reactive({
     hasRotationEvent: false,
     showRotationEventValue: false
-  })
+  }),
 
-// Local var
-const railItems = ref([
-  {
-    name: "Home",
-    icon: "home",
-    route: "/",
-    active: false,
-  },
-  {
-    name: "Projects",
-    icon: "folder",
-    route: "/projects",
-    active: false,
-  },
-  {
-    name: "Me",
-    icon: "help",
-    route: "/me",
-    active: false,
-  },
-]);
+  // Local var
+  railItems = ref([
+    {
+      name: "Home",
+      icon: "home",
+      route: "/",
+      active: false,
+    },
+    {
+      name: "Projects",
+      icon: "folder",
+      route: "/projects",
+      active: false,
+    },
+    {
+      name: "Me",
+      icon: "help",
+      route: "/me",
+      active: false,
+    },
+  ]);
+
+provide('movement', movementPercentage)
 
 // Vue
 watchEffect(() => {
@@ -92,7 +100,9 @@ onMounted(() => {
   window.addEventListener("resize", onResizeWindow);
 
   patternPos.backgroundPosition = `${center.x}px ${center.y}px`;
-  contentContainer.value.addEventListener("scroll", onScroll);
+
+  console.log(contentContainer)
+  contentContainer._value.addEventListener("scroll", onScroll);
 
   root.value.addEventListener("pointermove", onPointerMove);
 });
@@ -100,7 +110,7 @@ onMounted(() => {
 onUnmounted(() => {
   // window.removeEventListener("deviceorientation", rotationParallax);
   // window.removeEventListener("resize", onResizeWindow);
-  // contentContainer.value.removeEventListener("scroll", onScroll);
+  // contentContainer._value.removeEventListener("scroll", onScroll);
   // root.value.removeEventListener("mousemove", onPointerMove);
   loadState.$reset;
 });
@@ -169,33 +179,36 @@ function rotationParallax(ev) {
 }
 
 function rotParallaxMove() {
-  let mapBetaY =
+  const mapBetaY =
     ((currentOrient.beta - (anchorOrient.beta - 40)) / 80) *
-    innerHeight;
-  let mapGammaX =
-    ((currentOrient.gamma - (anchorOrient.gamma - 40)) / 80) *
-    innerWidth;
+    innerHeight,
+    mapGammaX =
+      ((currentOrient.gamma - (anchorOrient.gamma - 40)) / 80) *
+      innerWidth;
   // patternPos.backgroundPosition = `${
   //   center.x + (mapGammaX - center.x) / 40.125
   // }px ${center.y + (mapBetaY - center.y) / 40.125}px`;
   contentParallax.top = ((innerHeight / 2 - mapBetaY) * -1) / 7.5 + "px";
   contentParallax.left = ((center.x - mapGammaX) * -1) / 7.5 + "px";
   padding.paddingBottom = (mapBetaY / innerHeight) * -75 + 75 + "px";
+  movementPercentage.value.x = pointer.x / innerWidth * 100
+  movementPercentage.value.y = pointer.y / innerHeight * 100
 }
 
 function onResizeWindow() {
   center.x = window.innerWidth / 2;
-  contentParallax.transformOrigin = `${center.x}px ${innerHeight / 2 + contentContainer.value.scrollTop
+  contentParallax.transformOrigin = `${center.x}px ${innerHeight / 2 + contentContainer._value.scrollTop
     }px`;
   parallaxEffect();
 }
 
 function onScroll() {
-  center.y = innerHeight / 2 - contentContainer.value.scrollTop / 10;
-  contentParallax.transformOrigin = `${innerWidth / 2}px ${innerHeight / 2 + contentContainer.value.scrollTop
+  console.log(innerWidth / 2)
+  center.y = innerHeight / 2 - contentContainer._value.scrollTop / 10;
+  contentParallax.transformOrigin = `${innerWidth / 2}px ${innerHeight / 2 + contentContainer._value.scrollTop
     }px`;
-  patternPos.backgroundPosition = `${center.x + (pointer.x - center.x) / 100
-    }px ${center.y + (pointer.y - center.y) / 100}px`;
+  patternPos.backgroundPosition = `${center.x + (pointer.x - center.x) / 150
+    }px ${center.y + (pointer.y - center.y) / 150}px`;
 }
 
 function onPointerMove(ev) {
@@ -220,11 +233,13 @@ function parallaxEffect() {
   // console.log("params", x, y);
   // console.log("backgroundPos", patternPos.backgroundPosition);
   // console.log("client size", innerHeight, innerWidth);
-  patternPos.backgroundPosition = `${center.x + (pointer.x - center.x) / 160.5
-    }px ${center.y + (pointer.y - center.y) / 160.5}px`;
+  patternPos.backgroundPosition = `${center.x + (pointer.x - center.x) / 150
+    }px ${center.y + (pointer.y - center.y) / 150}px`;
   contentParallax.top = ((innerHeight / 2 - pointer.y) * -1) / 30 + "px";
   contentParallax.left = ((center.x - pointer.x) * -1) / 30 + "px";
   padding.paddingBottom = (pointer.y / innerHeight) * -75 + 75 + "px";
+  movementPercentage.value.x = pointer.x / innerWidth * 100
+  movementPercentage.value.y = pointer.y / innerHeight * 100
 }
 </script>
 <template>
