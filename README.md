@@ -1,9 +1,5 @@
-# Changelogs
+Here's everything on my site.
 
-Aug 1st 2021:
-- Trying github for the first time
-- Trash site
+Prompts on [site-prompts](https://github.com/hiyorun/) repo.
 
-Apr 2nd 2022:
-- Update to latest site on Firebase Hosting
-
+I'm just nothing so don't expect a beautiful codes here. Making the repo public just because I think that people should be able to see/contribute. Also feedback is welcome for my spaghetti code.
