@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import SiteRoot from "../components/SiteRoot.vue";
+import HomePage from "../components/HomePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,14 +7,14 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: SiteRoot,
+      component: HomePage,
     },
     // // Use this style to lazy-load them mfs
-    // {
-    //   path: "/projects",
-    //   name: "projects",
-    //   component: () => import("../components/child/ProjectWorks.vue"),
-    // },
+    {
+      path: "/projekt",
+      name: "projekt",
+      component: () => import("../components/ProjektPage.vue"),
+    },
     // {
     //   path: "/me",
     //   name: "about-me",

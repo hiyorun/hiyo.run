@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Fantasque;
+  src: url(typefaces/fantasquemono.ttf);
+}
+
+*:not(html, body) {
+  transition: 1s;
+}
+
+*:not(.material-symbols-outlined) {
+  font-family: "Fantasque", sans-serif;
+}
+
+.noisy {
+  background-image: url(imgs/noise.svg);
+}

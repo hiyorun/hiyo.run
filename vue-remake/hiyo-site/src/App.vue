@@ -1,6 +1,5 @@
 <script setup>
-import SiteRoot from "./components/SiteRoot.vue";
 </script>
 <template>
-  <site-root />
+  <router-view></router-view>
 </template>
