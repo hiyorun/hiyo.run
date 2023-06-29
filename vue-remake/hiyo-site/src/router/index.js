@@ -11,9 +11,9 @@ const router = createRouter({
     },
     // // Use this style to lazy-load them mfs
     {
-      path: "/projekt",
-      name: "projekt",
-      component: () => import("../components/ProjektPage.vue"),
+      path: "/projects",
+      name: "projects",
+      component: () => import("../components/ProjectsPage.vue"),
     },
     // {
     //   path: "/me",

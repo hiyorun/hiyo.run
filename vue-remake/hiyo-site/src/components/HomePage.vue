@@ -1,29 +1,33 @@
 <script setup>
 import { ArrowDownCircleIcon } from '@heroicons/vue/24/solid'
-import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { useBusy } from '@/states/busy.js'
+import { onMounted } from 'vue';
 
 const router = useRouter(),
-  states = reactive({
-    loading: false
-  })
+  busy = useBusy()
 
-function explore() {
-  states.loading = true
+// Lifecycle handlers
+onMounted(() => {
+  busy.setBusy(false)
+})
 
-  setTimeout(() => { router.push('/projekt') }, 1000)
+// Functions
+function startExploration() {
+  busy.setBusy(true)
+  setTimeout(() => { router.push('/projects') }, 1000)
 }
 
 </script>
 <template>
-  <div class="min-h-full flex flex-col justify-center items-center bg-arisu-200 dark:bg-arisu-900 noisy">
-    <h1 :class="[states.loading ? 'opacity-0' : '']" class="mt-5 text-7xl text-arisu-900 dark:text-arisu-100">
+  <div class="min-h-full flex flex-1 flex-col justify-center items-center bg-arisu-200 dark:bg-arisu-900 noisy">
+    <h1 :class="[busy.isBusy ? 'smoothing opacity-0' : '']" class="mt-5 text-7xl text-arisu-900 dark:text-arisu-100">
       hiyo.run
     </h1>
-    <h2 :class="[states.loading ? 'opacity-0' : '']" class="mt-5 text-xl text-arisu-900 dark:text-arisu-100">
+    <h2 :class="[busy.isBusy ? 'smoothing opacity-0' : '']" class="mt-5 text-xl text-arisu-900 dark:text-arisu-100">
       Take
       a dive into my little imagination.</h2>
-    <button @click="explore" :class="[states.loading ? 'pb-52 opacity-0' : '']">
+    <button @click="startExploration" :class="[busy.isBusy ? 'smoothing pb-52 opacity-0' : '']">
       <ArrowDownCircleIcon class="mt-5 h-10 text-arisu-900 dark:text-arisu-100" />
     </button>
   </div>
