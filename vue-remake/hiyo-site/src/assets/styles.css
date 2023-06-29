@@ -8,7 +8,7 @@
   src: url(typefaces/fantasquemono.ttf);
 }
 
-*:not(html, body) {
+.smoothing{
   transition: 1s;
 }
 
