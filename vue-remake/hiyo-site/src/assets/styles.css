@@ -8,12 +8,17 @@
   src: url(typefaces/fantasquemono.ttf);
 }
 
+@font-face {
+  font-family: Monofur;
+  src: url(typefaces/monofur.ttf);
+}
+
 .smoothing{
   transition: 1s;
 }
 
 *:not(.material-symbols-outlined) {
-  font-family: "Fantasque", sans-serif;
+  font-family: "Monofur", sans-serif;
 }
 
 .noisy {
