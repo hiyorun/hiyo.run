@@ -5,10 +5,8 @@ export const usePrompt = defineStore("prompt", {
     prompts: [""],
   }),
   getters: {
-    choosePrompt(state) {
-      let chosen =
-        state.prompts[Math.floor(Math.random() * state.prompts.length)];
-      return chosen;
+    getPrompt(state) {
+      return this.prompts;
     },
   },
   actions: {

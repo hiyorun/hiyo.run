@@ -4,17 +4,13 @@ import { usePrompt } from './states/prompts.js'
 import { useBusy } from '@/states/busy.js'
 import LoadingIndicator from './components/err-load/LoadingIndicator.vue'
 
-const firstTake = reactive({
-  initiated: false
-}),
-  prompt = usePrompt(),
+const prompt = usePrompt(),
   busy = useBusy()
 
 onMounted(() => {
+  busy.setBusy(true)
   getPrompts()
-  setTimeout(() => {
-    firstTake.initiated = true
-  }, 1000)
+  busy.setBusy(false)
 })
 
 function getPrompts() {
@@ -27,6 +23,9 @@ function getPrompts() {
 }
 </script>
 <template>
-  <LoadingIndicator class="absolute m-3 z-50" v-if="busy.isBusy"/>
-  <router-view :class="[firstTake.initiated ? 'smoothing opacity-1' : 'opacity-0']"></router-view>
+  <LoadingIndicator class="absolute m-3 z-50" v-if="busy.isBusy" />
+  <div class="absolute">{{ busy.isBusy }}</div>
+  <div class="text-arisu-900 dark:text-arisu-100 bg-arisu-100 dark:bg-arisu-900 noisy w-full h-full">
+    <router-view/>
+  </div>
 </template>
