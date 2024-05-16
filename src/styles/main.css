@@ -8,17 +8,10 @@
   src: url(@/assets/typefaces/monofur.ttf);
 }
 
-.smoothing{
-  transition: 1s;
-}
-
 *:not(.material-symbols-outlined) {
   font-family: "Monofur", sans-serif;
 }
 
 .noisy {
   background-image: url(@/assets/imgs/noise.svg);
-}
-
-.icon{
 }
