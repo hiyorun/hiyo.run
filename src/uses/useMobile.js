@@ -1,6 +1,6 @@
 import { computed, onMounted, onUnmounted, reactive } from "vue";
 
-export function hiBreakpoints() {
+export function useViewport() {
   const clientSize = reactive({
     width: window.innerWidth,
     height: window.innerHeight
