@@ -35,7 +35,7 @@ const socials = [
     },
 ]
 
-function toProject(){
+function toProject() {
     router.replace("/#project")
 }
 
@@ -48,7 +48,6 @@ onMounted(() => {
 <template>
     <div
         class="h-screen mx-6 flex flex-col justify-around md:items-center md:text-center md:max-w-screen-md md:mx-auto">
-        <div><!---spacer--></div>
         <div class="flex flex-col gap-2">
             <h1 class="text-4xl font-extrabold">
                 Take
@@ -64,9 +63,11 @@ onMounted(() => {
                 </a>
             </div>
         </div>
+    </div>
+    <div class="absolute bottom-24 flex justify-center items-center w-full translate-y-[50%]">
         <button class="h-10 w-10 hover:w-12 hover:h-12 transition-all duration-500" @click="toProject()">
-            <ArrowDownCircleIcon/>
+            <ArrowDownCircleIcon />
         </button>
     </div>
-    <Waves class="absolute bottom-0 right-0" />
+    <Waves class="absolute top-[100vh] right-0 translate-y-[-100%]" />
 </template>

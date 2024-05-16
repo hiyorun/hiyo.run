@@ -45,6 +45,7 @@ onMounted(() => {
                 <path :d="`${wave.path}`"></path>
             </svg>
         </div>
+        <div class="h-14 md:h-0 bg-arisu-700 dark:bg-arisu-900"></div>
     </div>
 </template>
 <style scoped>
