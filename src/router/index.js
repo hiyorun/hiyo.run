@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "../components/HomePage.vue";
+import HomePage from "../pages/HomePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,17 +10,20 @@ const router = createRouter({
       component: HomePage,
     },
     // // Use this style to lazy-load them mfs
-    {
-      path: "/projects",
-      name: "projects",
-      component: () => import("../components/ProjectsPage.vue"),
-    },
     // {
     //   path: "/me",
     //   name: "about-me",
     //   component: () => import("../components/child/AboutMe.vue"),
     // },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
+  },
 });
 
 export default router;

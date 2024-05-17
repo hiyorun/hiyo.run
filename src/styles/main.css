@@ -4,17 +4,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: Fantasque;
-  src: url(typefaces/fantasquemono.ttf);
-}
-
-@font-face {
   font-family: Monofur;
-  src: url(typefaces/monofur.ttf);
-}
-
-.smoothing{
-  transition: 1s;
+  src: url(@/assets/typefaces/monofur.ttf);
 }
 
 *:not(.material-symbols-outlined) {
@@ -22,5 +13,5 @@
 }
 
 .noisy {
-  background-image: url(imgs/noise.svg);
+  background-image: url(@/assets/imgs/noise.svg);
 }
