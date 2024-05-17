@@ -16,22 +16,22 @@ const socials = [
     {
         name: 'Pixiv',
         icon: Pixiv,
-        link: 'https://pixiv.net'
+        link: 'https://www.pixiv.net/en/users/28906889'
     },
     {
         name: 'Reddit',
         icon: Reddit,
-        link: 'https://reddit.com'
+        link: 'https://www.reddit.com/u/ldy3112'
     },
     {
         name: 'Misskey',
         icon: Misskey,
-        link: 'https://misskey.art'
+        link: 'https://misskey.art/@hiyorun@misskey.art'
     },
     {
         name: 'Twitter',
         icon: Twitter,
-        link: 'https://twitter.com'
+        link: 'https://x.com/hiyorrun'
     },
 ]
 
