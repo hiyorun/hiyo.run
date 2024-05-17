@@ -1,7 +1,7 @@
 <script setup>
 import TitleSection from '../components/TitleSection.vue';
-import ProjectSection from '../components/ProjectSection.vue';
-import { onMounted } from 'vue';
+import IllustSection from '../components/IllustSection.vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
@@ -9,13 +9,14 @@ const router = useRouter()
 let projectPage;
 let observer;
 let trackPos = 0;
+let loadProjects = ref(false);
 
 function observerCallback(entries) {
   entries.forEach((entry) => {
     const ratio = entry.intersectionRatio
     if (ratio > 0.1 && trackPos < ratio) {
-      // projectPage.scrollIntoView({ behavior: "smooth" })
       router.replace("#project")
+      loadProjects.value = true
     } else if (ratio < 0.1 && trackPos > ratio) {
       router.replace("/")
     }
@@ -37,6 +38,6 @@ onMounted(() => {
 <template>
   <div class="w-full noisy bg-arisu-100 dark:bg-arisu-800 text-arisu-900 dark:text-arisu-100 flex flex-col">
     <TitleSection />
-    <ProjectSection id="project" />
+    <IllustSection :load="loadProjects" id="project" />
   </div>
 </template>
