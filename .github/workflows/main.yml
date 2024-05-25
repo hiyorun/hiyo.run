@@ -2,9 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ['master']
-
-
+    branches: ["master"]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -29,18 +27,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: "yarn"
       - name: Install dependencies
         run: yarn
       - name: Build
         run: yarn build
+        env:
+          VITE_STRAPI_TOKEN: ${{ secrets.VITE_STRAPI_TOKEN}}
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_API_BASE_PATH: ${{ vars.VITE_API_BASE_PATH }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-        
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
