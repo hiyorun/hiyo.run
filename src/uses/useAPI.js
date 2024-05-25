@@ -6,21 +6,32 @@ export function useAPI() {
   const basePath = import.meta.env.VITE_API_BASE_PATH
   let controller = null
 
-  async function get(path) {
-    const headers = new Headers({
-      'Authorization': 'Bearer ' + token
-    });
-
+  // @param {Object} queries Queries to query on the URL
+  async function get(path, query) {
     controller = new AbortController()
 
-    try {
+    let urlString = apiURL + "/"
 
-      const resp = await fetch(apiURL + basePath + path, {
+    if (basePath !== "") {
+      urlString += basePath + "/"
+    }
+    urlString += path
+
+    const queries = new URLSearchParams(query)
+    const queryString = queries.size > 0 ? "?" + queries : ""
+    urlString += queryString
+
+    try {
+      const resp = await fetch(urlString, {
+        mode: "cors",
         method: "GET",
-        headers: headers,
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json",
+        },
         signal: controller.signal
       })
-      return resp
+      return resp.json()
     } catch (error) {
       throw new Error(error)
     }
@@ -34,5 +45,5 @@ export function useAPI() {
     controller = null;
   })
 
-  return {get}
+  return { get }
 };
