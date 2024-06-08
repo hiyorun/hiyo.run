@@ -4,12 +4,36 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: Monofur;
-  src: url(@/assets/typefaces/monofur.ttf);
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-style: normal;
+  src: url(@/assets/typefaces/space_mono.ttf) format(truetype);
 }
 
+@font-face {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-style: normal;
+  src: url(@/assets/typefaces/space_mono-bold.ttf) format(truetype);
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-style: italic;
+  src: url(@/assets/typefaces/space_mono-italic.ttf) format(truetype);
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-style: italic;
+  src: url(@/assets/typefaces/space_mono-bolditalic.ttf) format(truetype);
+}
+
+
 *:not(.material-symbols-outlined) {
-  font-family: "Monofur", sans-serif;
+  font-family: "Space Mono", monospace;
 }
 
 .noisy {
