@@ -15,10 +15,10 @@ function observerCallback(entries) {
   entries.forEach((entry) => {
     const ratio = entry.intersectionRatio
     if (ratio > 0.1 && trackPos < ratio) {
-      router.replace("#project")
-      loadProjects.value = true
+      // router.replace("#project")
+      // loadProjects.value = true
     } else if (ratio < 0.1 && trackPos > ratio) {
-      router.replace("/")
+      // router.replace("/")
     }
     trackPos = ratio
   })
@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full noisy bg-arisu-100 dark:bg-arisu-800 text-arisu-900 dark:text-arisu-100 flex flex-col">
+  <div class="w-full flex flex-col">
     <TitleSection />
     <IllustSection :load="loadProjects" id="project" />
   </div>

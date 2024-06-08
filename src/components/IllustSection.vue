@@ -1,21 +1,24 @@
 <script setup>
-import { onMounted, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useAPI } from '../uses/useAPI';
 
 const props = defineProps({
     load: Boolean
 })
-const api = useAPI()
+const strapi = useAPI()
 
-let illustrations = []
+let posts = ref({})
 
-function lazyLoad(load) {
+async function lazyLoad(load) {
     if (!load) return;
-    console.log("Loading illusts")
-    api.get("/illustrations").then((resp) => { console.log(resp) })
+    const response = await strapi.get("timeline-posts", { populate: "*" })
+    response.data.forEach((val) => {
+        console.log(val.attributes[val.attributes.post_type], val.attributes.post_type, val.attributes2)
+    })
+    posts.value = response
 }
 
-watch(props,(val)=>{lazyLoad(val)})
+watch(props, (val) => { lazyLoad(val) })
 
 onMounted(() => {
     lazyLoad(props.load)
@@ -23,7 +26,10 @@ onMounted(() => {
 
 </script>
 <template>
-    <div class="h-screen bg-arisu-700 dark:bg-arisu-900">
-
+    <div class="h-screen bg-kikyou-700 dark:bg-kikyou-900">
+        <div v-for="post in posts">
+            {{ post.attributes }}
+            {{ post.id }}
+        </div>
     </div>
 </template>

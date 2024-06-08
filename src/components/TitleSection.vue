@@ -49,23 +49,23 @@ onMounted(() => {
     <div
         class="h-screen mx-6 flex flex-col justify-around md:items-center md:text-center md:max-w-screen-md md:mx-auto">
         <div class="flex flex-col gap-2">
-            <h1 class="text-4xl font-extrabold">
+            <h1 class="text-4xl font-bold tracking-tighter">
                 Take
-                a <u class="decoration-wavy">dive</u> into my little world.</h1>
-            <div class="text-arisu-600">or
-                <span class="bg-arisu-600 text-arisu-100 p-1">peek on</span>
+                a <u class="decoration-wavy">dive</u> into my little world,</h1>
+            <div class="text-kikyou-600">or
+                <span class="bg-kikyou-600 text-kikyou-50 px-1">peek on</span>
                 my social media:
             </div>
             <div class="flex gap-2 md:justify-center">
                 <a v-for="social in socials" :href="social.link" :title="social.name"
-                    class="transition-all duration-500 bg-arisu-700 hover:bg-arisu-600 dark:bg-arisu-100 hover:dark:bg-arisu-200 rounded-full p-3 text-arisu-100 dark:text-arisu-700">
+                    class="transition-colors duration-200 bg-kikyou-700 hover:bg-kikyou-600 dark:bg-kikyou-50 hover:dark:bg-kikyou-200 rounded-full p-3 text-kikyou-50 dark:text-kikyou-700">
                     <component :is="social.icon" class="w-7 h-7 flex items-center" />
                 </a>
             </div>
         </div>
     </div>
     <div class="absolute bottom-24 flex justify-center items-center w-full translate-y-[50%]">
-        <button class="h-10 w-10 hover:w-12 hover:h-12 transition-all duration-500" @click="toProject()">
+        <button class="h-10 w-10 hover:w-12 hover:h-12 transition-transform duration-200" @click="toProject()">
             <ArrowDownCircleIcon />
         </button>
     </div>
