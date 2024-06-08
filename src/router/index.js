@@ -18,6 +18,11 @@ const router = createRouter({
       path: "/code/:id",
       name: "code-details",
       component: () => import('../pages/CodeDetails.vue')
+    },
+    {
+      path: "/illust",
+      name: "illustrations",
+      component: () => import('../pages/IllustPage.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
