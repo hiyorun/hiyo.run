@@ -1,5 +1,5 @@
 <script setup>
-import { TransitionGroup, onBeforeMount, onBeforeUnmount, ref } from 'vue'
+import { TransitionGroup, onBeforeMount, ref } from 'vue'
 import { useAPI } from '../uses/useAPI';
 import { useBusy } from '../states/busy';
 import CodeGallery from '../components/CodeGallery.vue';
@@ -17,13 +17,9 @@ onBeforeMount(async () => {
     })
     codes.value = response
 })
-
-onBeforeUnmount(() => {
-
-})
 </script>
 <template>
-    <div class="mt-20 p-2 flex flex-col gap-4 max-w-screen-xl mx-auto">
+    <div class="mt-20 p-4 flex flex-col gap-4 max-w-screen-xl mx-auto">
         <div class="flex flex-col">
             <span class="text-4xl tracking-tighter font-bold">Under the Digital Hood</span>
             <span class="">A glimpse into my code works</span>

@@ -1,5 +1,6 @@
 <script setup>
 import Tooltip from './Tooltip.vue';
+import 'devicon'
 
 const props = defineProps({
     data: Object
@@ -7,15 +8,17 @@ const props = defineProps({
 </script>
 <template>
     <div
-        class="transition-colors duration-200 noisy bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52">
+        class="transition-colors duration-200 noisy bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52">
         <span class="text-2xl font-bold">{{ props.data.attributes.title }}</span>
         <span class="grow">{{ props.data.attributes.description }}</span>
-        <div class="flex gap-2" v-if="props.data.attributes.details">
-            <div v-for="stack in props.data.attributes.details.stack">{{ stack }}</div>
+        <div class="flex items-center gap-2" v-if="props.data.attributes.details">
+            <div v-for="stack in props.data.attributes.details.stack">
+                <i :class="[`devicon-${stack}-plain`]" class="text-xl"></i>
+            </div>
             <span class="grow"></span>
             <Tooltip msg="Open Site" v-if="props.data.attributes.details.links">
                 <a :href="props.data.attributes.details.links" target="_blank" rel="noreferrer noopener"
-                    class="transition-colors duration-200 bg-kikyou-100 hover:bg-kikyou-200 dark:bg-kikyou-900 hover:dark:bg-kikyou-800 rounded-full flex items-center justify-center w-12 h-12">
+                    class="transition-colors duration-200 bg-kikyou-100 hover:bg-kikyou-200 dark:bg-kikyou-900 hover:dark:bg-kikyou-800 text-kikyou-900 dark:text-kikyou-50 no-underline rounded-full flex items-center justify-center w-12 h-12">
                     <span class="material-symbols-outlined">
                         open_in_new
                     </span>
@@ -23,7 +26,7 @@ const props = defineProps({
             </Tooltip>
             <Tooltip msg="Repository">
                 <a :href="props.data.attributes.git_repo" target="_blank" rel="noreferrer noopener"
-                    class="transition-colors duration-200 bg-kikyou-100 hover:bg-kikyou-200 dark:bg-kikyou-900 hover:dark:bg-kikyou-800 rounded-full flex items-center justify-center w-12 h-12">
+                    class="transition-colors duration-200 bg-kikyou-100 hover:bg-kikyou-200 dark:bg-kikyou-900 hover:dark:bg-kikyou-800 text-kikyou-900 dark:text-kikyou-50 no-underline rounded-full flex items-center justify-center w-12 h-12">
                     <span class="material-symbols-outlined">
                         code
                     </span>
