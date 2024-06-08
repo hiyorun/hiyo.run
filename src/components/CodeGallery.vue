@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 <template>
     <div
-        class="transition-colors duration-200 noisy bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52">
+        class="transition-colors duration-200 bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52">
         <span class="text-2xl font-bold">{{ props.data.attributes.title }}</span>
         <span class="grow">{{ props.data.attributes.description }}</span>
         <div class="flex items-center gap-2" v-if="props.data.attributes.details">
