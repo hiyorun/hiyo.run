@@ -36,7 +36,7 @@ const socials = [
 ]
 
 function toProject() {
-    router.replace("/#project")
+    router.replace("/#spotlight")
 }
 
 onMounted(() => {
@@ -64,10 +64,12 @@ onMounted(() => {
             </div>
         </div>
     </div>
-    <div class="absolute bottom-24 flex justify-center items-center w-full translate-y-[50%]">
-        <button class="h-10 w-10 hover:w-12 hover:h-12 transition-transform duration-200" @click="toProject()">
-            <ArrowDownCircleIcon />
-        </button>
-    </div>
-    <Waves class="absolute top-[100vh] right-0 translate-y-[-100%]" />
+    <button
+        class="absolute bottom-32 left-1/2 -translate-x-1/2 rounded-full flex items-center justify-center h-8 w-8 transition-color duration-200 bg-kikyou-700 hover:bg-kikyou-600 dark:bg-kikyou-50 hover:dark:bg-kikyou-200 text-kikyou-50 dark:text-kikyou-700"
+        @click="toProject()">
+        <span class="material-symbols-outlined">
+            arrow_downward
+        </span>
+    </button>
+    <Waves class="absolute bottom-0 right-0" />
 </template>

@@ -38,14 +38,17 @@ onMounted(() => {
 
 </script>
 <template>
-    <div class="w-screen overflow-hidden text-kikyou-700 dark:text-kikyou-900">
-        <div class="wave">
+    <div class="w-screen text-kikyou-700 dark:text-kikyou-900">
+        <div class="overflow-hidden">
+            <div class="wave">
             <svg :style="{ width: `${wave.total}px` }" fill="currentColor"
                 :viewBox="`0 0 ${wave.total}, ${wave.height}`">
                 <path :d="`${wave.path}`"></path>
             </svg>
         </div>
-        <div class="h-14 md:h-0 bg-kikyou-700 dark:bg-kikyou-900"></div>
+        </div>
+        <div class="h-0 bg-kikyou-700 dark:bg-kikyou-900"></div>
+        <div class="absolute bg-kikyou-700 h-screen top-full left-0 w-screen -z-50"></div>
     </div>
 </template>
 <style scoped>
