@@ -5,10 +5,16 @@ import 'devicon'
 const props = defineProps({
     data: Object
 })
+
+function returnDateString(dateString) {
+    const date = new Date(dateString)
+    return date.toLocaleString()
+}
 </script>
 <template>
-    <div
+    <RouterLink :to="{ name: 'code-details', params: { id: props.data.id } }"
         class="transition-colors duration-200 bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52">
+        <span class="opacity-50 text-xs">{{ returnDateString(data.attributes.date) }}</span>
         <span class="text-2xl font-bold">{{ props.data.attributes.title }}</span>
         <span class="grow">{{ props.data.attributes.description }}</span>
         <div class="flex items-center gap-2" v-if="props.data.attributes.details">
@@ -33,5 +39,5 @@ const props = defineProps({
                 </a>
             </Tooltip>
         </div>
-    </div>
+    </RouterLink>
 </template>

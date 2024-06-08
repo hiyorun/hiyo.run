@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
-import CodePage from "../pages/CodePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,8 +12,13 @@ const router = createRouter({
     {
       path: "/code",
       name: "code-works",
-      component: CodePage
+      component: () => import('../pages/CodePage.vue')
     },
+    {
+      path: "/code/:id",
+      name: "code-details",
+      component: () => import('../pages/CodeDetails.vue')
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
