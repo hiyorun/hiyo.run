@@ -52,8 +52,8 @@ onMounted(() => {
             <h1 class="text-4xl font-bold tracking-tighter">
                 Take
                 a <u class="decoration-wavy">dive</u> into my little world,</h1>
-            <div class="text-kikyou-600">or
-                <span class="bg-kikyou-600 text-kikyou-50 px-1">peek on</span>
+            <div class="text-kikyou-600 dark:text-kikyou-200">or
+                <span class="bg-kikyou-600 text-kikyou-50 dark:bg-kikyou-200 dark:text-kikyou-800 px-1">peek on</span>
                 my social media:
             </div>
             <div class="flex gap-2 md:justify-center">
