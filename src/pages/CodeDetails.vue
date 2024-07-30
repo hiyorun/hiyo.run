@@ -21,7 +21,7 @@ function returnDateString(dateString) {
 
 </script>
 <template>
-    <div class="mt-16 p-4 flex flex-col gap-4 max-w-screen-xl mx-auto">
+    <div class="pt-20 p-4 flex flex-col gap-4 max-w-screen-xl mx-auto">
         <RouterLink to="/code" class="flex items-center gap-2">
             <span class="material-symbols-outlined text-sm">
                 arrow_back_ios
