@@ -26,7 +26,7 @@ onMounted(() => {
 
 </script>
 <template>
-    <div class="h-screen bg-kikyou-700 dark:bg-kikyou-900 pt-20">
+    <div class="h-screen text-kikyou-50 bg-kikyou-700 dark:bg-kikyou-900 pt-20">
         <div class="px-4 flex flex-col gap-1">
             <span>This section hasn't finished:</span>
             <span class="text-4xl tracking-tighter font-bold">Corals of Creation</span>
