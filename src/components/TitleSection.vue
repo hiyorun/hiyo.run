@@ -41,7 +41,6 @@ function toProject() {
 
 onMounted(() => {
     busy.setBusy(false)
-    console.log("mounted")
 })
 </script>
 

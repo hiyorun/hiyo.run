@@ -19,7 +19,7 @@ onBeforeMount(async () => {
 })
 </script>
 <template>
-    <div class="mt-20 p-4 flex flex-col gap-4 max-w-screen-xl mx-auto">
+    <div class="pt-20 p-4 flex flex-col gap-4 max-w-screen-xl mx-auto">
         <div class="flex flex-col">
             <span class="text-4xl tracking-tighter font-bold">Under the Digital Hood</span>
             <span class="">A glimpse into my code works</span>
