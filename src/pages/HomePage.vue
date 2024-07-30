@@ -1,7 +1,7 @@
 <script setup>
 import TitleSection from '../components/TitleSection.vue';
 import IllustSection from '../components/IllustSection.vue';
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
@@ -14,10 +14,7 @@ let loadProjects = ref(false);
 function observerCallback(entries) {
   entries.forEach((entry) => {
     const ratio = entry.intersectionRatio
-    if (ratio > 0.1 && trackPos < ratio) {
-      // router.replace("#spotlight")
-      // loadProjects.value = true
-    } else if (ratio < 0.1 && trackPos > ratio) {
+    if (ratio < 0.1 && trackPos > ratio) {
       router.replace("/")
     }
     trackPos = ratio
@@ -32,6 +29,10 @@ onMounted(() => {
   })
 
   observer.observe(projectPage)
+})
+
+onBeforeUnmount(() => {
+  observer.unobserve(projectPage)
 })
 </script>
 
