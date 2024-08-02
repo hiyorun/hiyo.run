@@ -12,6 +12,7 @@ const router = createRouter({
         title: "Hiyorun",
         metaTags: [
           {
+            name: 'description',
             property: 'description',
             content: "Hiyorun's (or Hiyorrun's) little world, a log of my thoughts and dreams. Dive in, an adventure awaits!"
           },
@@ -42,6 +43,7 @@ const router = createRouter({
         title: "Under the Digital Hood",
         metaTags: [
           {
+            name: 'description',
             property: 'description',
             content: "A glimpse into my code works. Collections of what I have learned throughout my digital journey."
           },
@@ -77,6 +79,7 @@ const router = createRouter({
         title: "The Dance of the Digital Strokes",
         metaTags: [
           {
+            name: 'description',
             property: 'description',
             content: "A gallery of my imaginations. Where I let it run wild on a canvas of pixels."
           },
