@@ -1,5 +1,5 @@
 <script setup>
-import { TransitionGroup, onBeforeMount, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useAPI } from '../uses/useAPI';
 import { useBusy } from '../states/busy';
 import { useRoute } from 'vue-router'
@@ -7,11 +7,30 @@ import { useRoute } from 'vue-router'
 const strapi = useAPI()
 const busy = useBusy()
 const route = useRoute()
-const data = ref({})
+const data = ref({
+    id: 0,
+    attributes: {
+        title: "",
+        description: "",
+        git_repo: "",
+        date: "1970-01-01T00:00:00.000Z",
+        createdAt: "1970-01-01T00:00:00.000Z",
+        updatedAt: "1970-01-01T00:00:00.000Z",
+        publishedAt: "1970-01-01T00:00:00.000Z",
+        details: {
+            why: "",
+            what: "",
+            links: "",
+            stack: []
+        }
+    }
+})
 
 onBeforeMount(async () => {
+    busy.setBusy(true)
     const response = await strapi.get("codes/" + route.params.id)
     data.value = response.data
+    busy.setBusy(false)
 })
 
 function returnDateString(dateString) {
@@ -41,12 +60,12 @@ function returnDateString(dateString) {
         </div>
         <div class="mt-12 flex flex-col gap-6">
             <p>
-                <div class="text-2xl font-bold mb-2">The What</div>
-                {{ data.attributes.details.what }}
+            <div class="text-2xl font-bold mb-2">The What</div>
+            {{ data.attributes.details.what }}
             </p>
             <p>
-                <div class="text-2xl font-bold mb-2">The Why</div>
-                {{ data.attributes.details.why }}
+            <div class="text-2xl font-bold mb-2">The Why</div>
+            {{ data.attributes.details.why }}
             </p>
         </div>
     </div>

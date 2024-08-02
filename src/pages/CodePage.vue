@@ -9,6 +9,7 @@ const busy = useBusy()
 const codes = ref({})
 
 onBeforeMount(async () => {
+    busy.setBusy(true)
     const response = await strapi.get("codes")
     response.data.sort((a, b) => {
         const dateA = new Date(a.attributes.date),
@@ -16,6 +17,7 @@ onBeforeMount(async () => {
         return dateA.getTime() < dateB.getTime()
     })
     codes.value = response
+    busy.setBusy(false)
 })
 </script>
 <template>
