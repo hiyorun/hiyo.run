@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /robots.txt
+Allow: /
+Allow: /code
+Allow: /illust
