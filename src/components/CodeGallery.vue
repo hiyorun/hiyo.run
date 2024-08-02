@@ -1,7 +1,11 @@
 <script setup>
+import { useRouter } from 'vue-router';
 import Tooltip from './Tooltip.vue';
 import 'devicon'
+import { useBusy } from '../states/busy';
 
+const router = useRouter()
+const busy = useBusy()
 const props = defineProps({
     data: Object
 })
@@ -10,10 +14,17 @@ function returnDateString(dateString) {
     const date = new Date(dateString)
     return date.toLocaleString()
 }
+
+function navigator(path) {
+    busy.setBusy(true)
+    router.push(path).then(() => {
+        busy.setBusy(false)
+    })
+}
 </script>
 <template>
-    <RouterLink :to="{ name: 'code-details', params: { id: props.data.id } }"
-        class="transition-colors duration-200 bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52">
+    <a @click="navigator({ name: 'code-details', params: { id: props.data.id } })"
+        class="transition-colors duration-200 bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-4 flex flex-col gap-2 min-h-52 cursor-pointer">
         <span class="opacity-50 text-xs">{{ returnDateString(data.attributes.date) }}</span>
         <span class="text-2xl font-bold">{{ props.data.attributes.title }}</span>
         <span class="grow">{{ props.data.attributes.description }}</span>
@@ -39,5 +50,5 @@ function returnDateString(dateString) {
                 </a>
             </Tooltip>
         </div>
-    </RouterLink>
+    </a>
 </template>
