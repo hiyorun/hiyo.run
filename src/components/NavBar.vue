@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import LoadingIndicator from './err-load/LoadingIndicator.vue'
+import SiteLogo from '@/assets/imgs/icons/SiteLogo.vue';
 import { useRouter } from 'vue-router';
 import { useBusy } from '../states/busy';
 
@@ -34,7 +35,7 @@ function navigator(path) {
             <div class="flex items-start px-4 gap-2">
                 <button aria-label="Home" @click="navigator('/')"
                     class="rounded-full text-kikyou-900 dark:text-kikyou-50">
-                    hiyorun
+                    <SiteLogo class="w-20" :floating="floating" />
                 </button>
                 <LoadingIndicator />
             </div>
