@@ -1,6 +1,6 @@
 <script setup>
-import { nextTick, onMounted, reactive, ref, watch } from 'vue';
-import { useViewport } from '../uses/useMobile';
+import { onMounted, reactive, watch } from 'vue';
+import { useViewport } from '@/uses/useViewport';
 
 const size = useViewport()
 
