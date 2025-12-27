@@ -1,4 +1,4 @@
-import { computed, onMounted, onUnmounted, reactive } from "vue";
+import { onMounted, onUnmounted, reactive } from "vue";
 import resolveConfig from "tailwindcss/resolveConfig"
 import tailwindConfig from "../../tailwind.config";
 
@@ -27,7 +27,7 @@ export function useViewport() {
     clientSize.width = window.innerWidth
     clientSize.height = window.innerHeight
     const w = clientSize.width
-    const h = clientSize.height
+    // const h = clientSize.height
     const sm = parseInt(breakpoints.sm)
     const md = parseInt(breakpoints.md)
     const lg = parseInt(breakpoints.lg)
