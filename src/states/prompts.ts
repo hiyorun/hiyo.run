@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-export const usePrompt = defineStore("prompt", {
+export const usePrompt = defineStore('prompt', {
   state: () => ({
-    prompts: [""],
+    prompts: [''],
   }),
   getters: {
     getPrompt(state) {
