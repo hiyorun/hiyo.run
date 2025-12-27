@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { shufflePrompt } from '@/uses/usePrompts';
 import { usePrompt } from '@/states/prompts'
 import { onMounted } from 'vue';

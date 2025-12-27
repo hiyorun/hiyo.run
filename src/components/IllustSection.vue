@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue';
 import { useAPI } from '../uses/useAPI';
 
@@ -7,7 +7,7 @@ const props = defineProps({
 })
 const strapi = useAPI()
 
-let posts = ref({})
+const posts = ref({})
 
 async function lazyLoad(load) {
     if (!load) return;

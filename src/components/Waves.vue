@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { onMounted, reactive, watch } from 'vue';
 import { useViewport } from '@/uses/useViewport';
 

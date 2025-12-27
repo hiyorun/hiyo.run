@@ -1,5 +1,4 @@
-<script setup>
-import { ArrowDownCircleIcon } from '@heroicons/vue/24/solid'
+<script lang="ts" setup>
 import { useBusy } from '@/states/busy.js'
 import { onMounted } from 'vue';
 import Pixiv from '@/assets/imgs/icons/PixivIcon.vue';

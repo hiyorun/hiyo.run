@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 import LoadingIndicator from './err-load/LoadingIndicator.vue'
 import { useRouter } from 'vue-router';

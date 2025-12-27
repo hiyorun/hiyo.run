@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { useRouter } from 'vue-router';
 import Tooltip from './Tooltip.vue';
 import 'devicon'
