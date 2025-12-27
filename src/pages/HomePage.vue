@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import TitleSection from '../components/TitleSection.vue';
 import IllustSection from '../components/IllustSection.vue';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
@@ -9,7 +9,7 @@ const router = useRouter()
 let projectPage;
 let observer;
 let trackPos = 0;
-let loadProjects = ref(false);
+const loadProjects = ref(false);
 
 function observerCallback(entries) {
   entries.forEach((entry) => {

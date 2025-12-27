@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { onBeforeMount, ref } from 'vue'
 import { useAPI } from '../uses/useAPI';
 import { useBusy } from '../states/busy';
