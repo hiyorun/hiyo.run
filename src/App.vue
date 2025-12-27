@@ -1,8 +1,8 @@
-<script setup>
+<script lang="ts" setup>
 import { Transition, onMounted, onUnmounted, ref } from 'vue';
 import NavBar from './components/NavBar.vue';
 
-let floating = ref(false)
+const floating = ref(false)
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
