@@ -1,4 +1,4 @@
-<script setup></script>
+<script lang="ts" setup></script>
 <template>
    <svg viewBox="0 0 502.74423 433.19318" fill="currentColor">
       <g transform="matrix(2.4524058,0,0,2.4200684,-62.536201,-83.008344)">

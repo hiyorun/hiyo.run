@@ -1,4 +1,4 @@
-<script setup></script>
+<script lang="ts" setup></script>
 <template>
    <svg viewBox="0 0 280.20862 256.9003" fill="currentColor" stroke="currentColor">
       <path style="stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;"

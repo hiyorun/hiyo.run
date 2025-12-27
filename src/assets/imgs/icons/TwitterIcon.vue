@@ -1,4 +1,4 @@
-<script setup></script>
+<script lang="ts" setup></script>
 <template>
    <svg fill="currentColor" viewBox="0 0 300.10001 271">
       <path

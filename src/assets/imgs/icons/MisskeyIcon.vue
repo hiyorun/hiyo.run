@@ -1,4 +1,4 @@
-<script setup></script>
+<script lang="ts" setup></script>
 <template>
     <svg fill="currentColor" viewBox="0 0 135.47027 94.939902">
         <path transform="translate(-38.1003,-120.96)"

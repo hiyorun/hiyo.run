@@ -2,10 +2,10 @@
 import { ArrowDownCircleIcon } from '@heroicons/vue/24/solid'
 import { useBusy } from '@/states/busy.js'
 import { onMounted } from 'vue';
-import Pixiv from '@/assets/imgs/icons/Pixiv.vue';
-import Reddit from '@/assets/imgs/icons/Reddit.vue';
-import Twitter from '@/assets/imgs/icons/Twitter.vue';
-import Misskey from '@/assets/imgs/icons/Misskey.vue';
+import Pixiv from '@/assets/imgs/icons/PixivIcon.vue';
+import Reddit from '@/assets/imgs/icons/RedditIcon.vue';
+import Twitter from '@/assets/imgs/icons/TwitterIcon.vue';
+import Misskey from '@/assets/imgs/icons/MisskeyIcon.vue';
 import Waves from './Waves.vue';
 import { useRouter } from 'vue-router';
 
