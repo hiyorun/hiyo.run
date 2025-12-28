@@ -35,7 +35,7 @@
 <template>
   <div
     v-if="busy.isBusy"
-    class="flex gap-2 items-baseline"
+    class="flex gap-2 items-center"
   >
     <BrailleAnimation />
     <span class="overflow-hidden text-sm text-nowrap">{{ truncatePrompts() }}</span>

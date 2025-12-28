@@ -16,11 +16,11 @@
       href: '/code',
     },
   ]);
-  const props = defineProps({
-    floating: Boolean,
-  });
+  const { floating = false } = defineProps<{
+    floating: boolean;
+  }>();
 
-  function navigator(path) {
+  function navigator(path: string) {
     busy.setBusy(true);
     router.push(path).then(() => {
       busy.setBusy(false);
@@ -37,11 +37,11 @@
         rounded-full mx-auto max-w-screen-xl"
       :class="{ 'bg-kikyou-100 dark:bg-kikyou-900 shadow-xl': floating }"
     >
-      <div class="flex items-start px-4 gap-2">
+      <div class="flex items-center px-4 h-10 gap-4">
         <button
           aria-label="Home"
           @click="navigator('/')"
-          class="rounded-full text-kikyou-900 dark:text-kikyou-50"
+          class="font-bold text-kikyou-900 dark:text-kikyou-50"
         >
           hiyorun
         </button>
@@ -50,6 +50,7 @@
       <div class="flex items-center justify-evenly gap-2">
         <button
           v-for="navigate in navigations"
+          :key="navigate.href"
           :aria-label="navigate.label"
           @click="navigator(navigate.href)"
           class="transition-colors duration-200 py-2 px-4 bg-kikyou-200 hover:bg-kikyou-300
