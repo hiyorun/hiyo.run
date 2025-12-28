@@ -33,25 +33,29 @@
     <span class="opacity-50 text-xs">{{ returnDateString(data.date.toLocaleString()) }}</span>
     <span class="text-2xl font-bold">{{ props.data.title }}</span>
     <span class="grow">{{ props.data.description }}</span>
-    <div class="flex gap-2 text-sm">
+    <div class="flex gap-2 text-sm font-semibold">
       <a
-        class="transition-colors duration-200 bg-kikyou-700 hover:bg-kikyou-600 dark:bg-kikyou-50
-          hover:dark:bg-kikyou-200 rounded-full px-2 text-kikyou-50 dark:text-kikyou-700"
-        v-for="(license, index) in props.data.licenses"
+        @click.stop
+        class="transition-colors duration-200 px-2.5 py-0.5 bg-kikyou-100 hover:bg-kikyou-200
+          dark:bg-kikyou-800 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50
+          rounded-full"
+        v-for="(license, index) in data?.licenses"
+        target="_blank"
+        rel="noreferrer noopener"
         :key="index"
         :href="license.link"
       >
         {{ license.name }}
       </a>
     </div>
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1">
       <div
         :key="stack"
         v-for="stack in props.data.stacks"
       >
         <i
           :class="[`devicon-${stack}-plain`]"
-          class="bg-kikyou-700 dark:bg-kikyou-50 rounded-full text-kikyou-50 dark:text-kikyou-700
+          class="bg-kikyou-100 dark:bg-kikyou-800 rounded-full text-kikyou-800 dark:text-kikyou-100
             text-xl p-2"
         ></i>
       </div>
@@ -65,8 +69,8 @@
           :href="props.data.link"
           target="_blank"
           rel="noreferrer noopener"
-          class="transition-colors duration-200 bg-kikyou-100 hover:bg-kikyou-200 dark:bg-kikyou-900
-            hover:dark:bg-kikyou-800 text-kikyou-900 dark:text-kikyou-50 no-underline rounded-full
+          class="transition-colors duration-200 bg-kikyou-900 hover:bg-kikyou-800 dark:bg-kikyou-100
+            hover:dark:bg-kikyou-50 text-kikyou-50 dark:text-kikyou-900 no-underline rounded-full
             flex items-center justify-center w-12 h-12"
         >
           <span class="material-symbols-outlined"> open_in_new </span>
@@ -80,9 +84,10 @@
           :href="props.data.repository"
           target="_blank"
           rel="noreferrer noopener"
-          class="transition-colors duration-200 bg-kikyou-100 hover:bg-kikyou-200 dark:bg-kikyou-900
-            hover:dark:bg-kikyou-800 text-kikyou-900 dark:text-kikyou-50 no-underline rounded-full
-            flex items-center justify-center w-12 h-12"
+          class="transition-colors duration-200 border-2 border-kikyou-900 hover:bg-kikyou-900
+            dark:border-kikyou-100 hover:dark:bg-kikyou-100 text-kikyou-900 dark:text-kikyou-50
+            hover:text-kikyou-50 hover:dark:text-kikyou-900 no-underline rounded-full flex
+            items-center justify-center w-12 h-12"
         >
           <span class="material-symbols-outlined"> code </span>
         </a>

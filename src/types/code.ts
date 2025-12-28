@@ -7,14 +7,23 @@ export type CodeObj = {
   };
   repository: string;
   description: string;
+  stacks: string[];
+  link: string;
+  licenses: {
+    name: string;
+    link?: string;
+  }[];
 };
 
 export type CodeDetails = {
   id: number;
   sections: {
     title: string;
-    body: string;
+    body: CodeDetailsBody[];
   }[];
-  stacks: string[];
-  links: string;
+};
+
+export type CodeDetailsBody = {
+  type: 'p' | 'ol' | 'ul';
+  value: string[] | string;
 };

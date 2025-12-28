@@ -44,24 +44,27 @@
           | <span class="text-2xl">{{ data?.description }}</span>
         </span>
       </span>
-      <div class="flex gap-2 text-sm">
+      <div class="flex gap-2 text-sm font-semibold">
         <a
-          class="transition-colors duration-200 bg-kikyou-700 hover:bg-kikyou-600 dark:bg-kikyou-50
-            hover:dark:bg-kikyou-200 rounded-full px-2 text-kikyou-50 dark:text-kikyou-700"
+          class="transition-colors duration-200 px-2.5 py-0.5 bg-kikyou-200 hover:bg-kikyou-300
+            dark:bg-kikyou-800 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50
+            rounded-full"
           v-for="(license, index) in data?.licenses"
+          target="_blank"
+          rel="noreferrer noopener"
           :key="index"
           :href="license.link"
         >
           {{ license.name }}
         </a>
       </div>
-      <div class="flex items-baseline gap-2">
+      <div class="flex items-baseline gap-1">
         <i
           v-for="stack in data?.stacks"
           :class="[`devicon-${stack}-plain`]"
           :key="stack"
-          class="bg-kikyou-700 dark:bg-kikyou-50 rounded-full text-kikyou-50 dark:text-kikyou-700
-            text-xl p-2"
+          class="p-2 bg-kikyou-200 dark:bg-kikyou-800 text-kikyou-900 dark:text-kikyou-50
+            rounded-full text-xl"
         ></i>
       </div>
     </div>
