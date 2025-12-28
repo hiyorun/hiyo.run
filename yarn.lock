@@ -1637,10 +1637,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devicon@npm:^2.16.0":
-  version: 2.16.0
-  resolution: "devicon@npm:2.16.0"
-  checksum: 10c0/4eb4aff42cb75df3239cdd28e469b89b24fa690cfa55cb990797ef909b44997750a06ec4b8e7306d02b803f4fd966ce65be882c16d124daed1e9aa7a27a1e2d9
+"devicon@npm:^2.17.0":
+  version: 2.17.0
+  resolution: "devicon@npm:2.17.0"
+  checksum: 10c0/0a71c646a33dc9e16fd308bf0ca639c90bf4a21f3c68c4fa58d9927fd9f419a0f24a0d2e77e4e5289091a7cf10986954177040a23d43765a3697bf65aced25a9
   languageName: node
   linkType: hard
 
@@ -2462,7 +2462,7 @@ __metadata:
     "@vue/tsconfig": "npm:^0.8.1"
     autoprefixer: "npm:^10.4.14"
     cssnano: "npm:^7.0.4"
-    devicon: "npm:^2.16.0"
+    devicon: "npm:^2.17.0"
     eslint: "npm:^9.39.2"
     eslint-plugin-vue: "npm:^10.6.2"
     jiti: "npm:^2.6.1"

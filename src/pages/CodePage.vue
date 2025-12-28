@@ -1,22 +1,24 @@
 <script lang="ts" setup>
-  import { TransitionGroup, onBeforeMount, ref } from 'vue';
+  import { onBeforeMount, ref } from 'vue';
   import { useAPI } from '../uses/useAPI';
   import { useBusy } from '../states/busy';
   import CodeGallery from '../components/CodeGallery.vue';
+import type { CodeObj } from '@/types/code';
+import type { APIResponse } from '@/types/response';
 
-  const strapi = useAPI();
+  const api = useAPI();
   const busy = useBusy();
-  const codes = ref({});
+  const codes = ref<CodeObj[]>([]);
 
   onBeforeMount(async () => {
     busy.setBusy(true);
-    const response = await strapi.get('codes');
-    response.data.sort((a, b) => {
-      const dateA = new Date(a.attributes.date),
-        dateB = new Date(b.attributes.date);
-      return dateA.getTime() < dateB.getTime();
+    const response  = await api.get<APIResponse<CodeObj>>('codes');
+    response.items.sort((a: CodeObj, b: CodeObj) => {
+      const dateA = new Date(a.date),
+        dateB = new Date(b.date);
+      return dateA.getTime() - dateB.getTime();
     });
-    codes.value = response;
+    codes.value = response.items;
     busy.setBusy(false);
   });
 </script>
@@ -33,7 +35,7 @@
       class="grid grid-cols-1 md:grid-cols-2 gap-4"
     >
       <CodeGallery
-        v-for="code in codes.data"
+        v-for="code in codes"
         :key="code.id"
         :data="code"
       />

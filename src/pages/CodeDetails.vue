@@ -1,39 +1,25 @@
 <script lang="ts" setup>
+  import 'devicon';
   import { onBeforeMount, ref } from 'vue';
   import { useAPI } from '../uses/useAPI';
   import { useBusy } from '../states/busy';
   import { useRoute } from 'vue-router';
+  import { type CodeObj } from '@/types/code';
 
-  const strapi = useAPI();
+  const api = useAPI();
   const busy = useBusy();
   const route = useRoute();
-  const data = ref({
-    id: 0,
-    attributes: {
-      title: '',
-      description: '',
-      git_repo: '',
-      date: '1970-01-01T00:00:00.000Z',
-      createdAt: '1970-01-01T00:00:00.000Z',
-      updatedAt: '1970-01-01T00:00:00.000Z',
-      publishedAt: '1970-01-01T00:00:00.000Z',
-      details: {
-        why: '',
-        what: '',
-        links: '',
-        stack: [],
-      },
-    },
-  });
+  const data = ref<CodeObj>();
 
   onBeforeMount(async () => {
     busy.setBusy(true);
-    const response = await strapi.get('codes/' + route.params.id);
-    data.value = response.data;
+    const response = await api.get<CodeObj>('codes/' + route.params.id + '?include=codeDetails');
+    console.log(response);
+    data.value = response;
     busy.setBusy(false);
   });
 
-  function returnDateString(dateString) {
+  function returnDateString(dateString: string) {
     const date = new Date(dateString);
     return date.toLocaleString();
   }
@@ -47,30 +33,36 @@
       <span class="material-symbols-outlined text-sm"> arrow_back_ios </span>
       Back
     </RouterLink>
-    <div class="flex flex-col gap-2">
-      <span class="opacity-50 text-sm">{{ returnDateString(data.attributes.date) }}</span>
-      <span class="text-4xl tracking-tighter font-bold">
-        {{ data.attributes.title }}
-      </span>
-      <span class="">{{ data.attributes.description }}</span>
-      <div class="flex items-baseline gap-2">
-        <i
-          v-for="stack in data.attributes.details.stack"
-          :class="[`devicon-${stack}-plain`]"
-          :key="stack"
-          class="text-xl"
-        ></i>
+    <template
+      :key="detail.id"
+      v-for="detail in data?._relations?.codeDetails"
+    >
+      <div class="flex flex-col gap-2">
+        <span class="opacity-50 text-sm">{{ returnDateString(data?.date ? data.date : '') }}</span>
+        <span class="text-4xl tracking-tighter font-bold">
+          {{ data?.title }}
+        </span>
+        <span class="">{{ data?.description }}</span>
+        <div class="flex items-baseline gap-2">
+          <i
+            v-for="stack in detail.stacks"
+            :class="[`devicon-${stack}-plain`]"
+            :key="stack"
+            class="text-xl"
+          ></i>
+        </div>
       </div>
-    </div>
-    <div class="mt-12 flex flex-col gap-6">
-      <span>
-        <div class="text-2xl font-bold mb-2">The What</div>
-        {{ data.attributes.details.what }}
-      </span>
-      <span>
-        <div class="text-2xl font-bold mb-2">The Why</div>
-        {{ data.attributes.details.why }}
-      </span>
-    </div>
+      <div class="mt-12 flex flex-col gap-6">
+        <template
+          :key="section.title"
+          v-for="section in detail.sections"
+        >
+          <span>
+            <div class="text-2xl font-bold mb-2">{{ section.title }}</div>
+            {{ section.body }}
+          </span>
+        </template>
+      </div>
+    </template>
   </div>
 </template>
