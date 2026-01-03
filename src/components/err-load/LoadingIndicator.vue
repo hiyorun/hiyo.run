@@ -35,8 +35,9 @@
     class="flex gap-2 items-center"
   >
     <BrailleAnimation />
-    <span class="overflow-hidden text-sm tracking-tight line-clamp-2 leading-4">{{ truncatePrompts() }}</span>
+    <span class="overflow-hidden text-sm tracking-tight line-clamp-2 leading-4">{{
+      truncatePrompts()
+    }}</span>
   </div>
 </template>
-<style scoped>
-</style>
+<style scoped></style>

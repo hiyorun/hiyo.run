@@ -25,11 +25,11 @@ export function useAPI() {
         query instanceof URLSearchParams
           ? query
           : new URLSearchParams(
-            Object.entries(query).filter(([, v]) => v !== null && v !== undefined) as [
-              string,
-              string,
-            ][],
-          );
+              Object.entries(query).filter(([, v]) => v !== null && v !== undefined) as [
+                string,
+                string,
+              ][],
+            );
 
       if (queries.size > 0) {
         urlString += `?${queries.toString()}`;

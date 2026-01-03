@@ -37,8 +37,8 @@
     :class="{ 'p-2': floating || preferences.reducedMotion }"
   >
     <div
-      class="transition-all duration-1000 bg-none p-2 w-full flex
-        justify-between items-center rounded-full mx-auto max-w-screen-xl"
+      class="transition-all duration-1000 bg-none p-2 w-full flex justify-between items-center
+        rounded-full mx-auto max-w-screen-xl"
       :class="{
         'bg-kikyou-100 dark:bg-kikyou-900 shadow-xl': floating || preferences.reducedMotion,
       }"

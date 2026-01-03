@@ -31,7 +31,10 @@
       <span class="text-4xl tracking-tighter font-bold">Corals of Creation</span>
       <span class="text-xl">A glance of my artistic psyche</span>
     </div>
-    <div v-for="post in posts" :key="post.id">
+    <div
+      v-for="post in posts"
+      :key="post.id"
+    >
       {{ post.description }}
       {{ post.id }}
     </div>

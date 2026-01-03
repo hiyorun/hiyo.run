@@ -23,7 +23,10 @@
   }
 </script>
 <template>
-  <div :class="{ 'reduce-motion': preferences.reducedMotion }" class="initial-load opacity-100">
+  <div
+    :class="{ 'reduce-motion': preferences.reducedMotion }"
+    class="initial-load opacity-100"
+  >
     <RouterView v-slot="{ Component }">
       <Transition
         :name="preferences.reducedMotion ? '' : 'fade'"
