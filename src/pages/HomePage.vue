@@ -1,44 +1,47 @@
-<script setup>
-import TitleSection from '../components/TitleSection.vue';
-import IllustSection from '../components/IllustSection.vue';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+<script lang="ts" setup>
+  import TitleSection from '../components/TitleSection.vue';
+  import WorksSection from '../components/WorksSection.vue';
+  import { onBeforeUnmount, onMounted, ref } from 'vue';
+  import { useRouter } from 'vue-router';
 
-const router = useRouter()
+  const router = useRouter();
 
-let projectPage;
-let observer;
-let trackPos = 0;
-let loadProjects = ref(false);
+  let projectPage: Element;
+  let observer: IntersectionObserver;
+  let trackPos = 0;
+  const loadProjects = ref(false);
 
-function observerCallback(entries) {
-  entries.forEach((entry) => {
-    const ratio = entry.intersectionRatio
-    if (ratio < 0.1 && trackPos > ratio) {
-      router.replace("/")
-    }
-    trackPos = ratio
-  })
-}
+  const observerCallback: IntersectionObserverCallback = (entries) => {
+    entries.forEach((entry) => {
+      const ratio = entry.intersectionRatio;
+      if (ratio < 0.1 && trackPos > ratio) {
+        router.replace('/');
+      }
+      trackPos = ratio;
+    });
+  };
 
-onMounted(() => {
-  projectPage = document.getElementById("spotlight")
-  observer = new IntersectionObserver(observerCallback, {
-    rootMargin: '0px',
-    threshold: [0, 0.1]
-  })
+  onMounted(() => {
+    projectPage = document.getElementById('spotlight') as Element;
+    observer = new IntersectionObserver(observerCallback, {
+      rootMargin: '0px',
+      threshold: [0, 0.1],
+    });
 
-  observer.observe(projectPage)
-})
+    observer.observe(projectPage);
+  });
 
-onBeforeUnmount(() => {
-  observer.unobserve(projectPage)
-})
+  onBeforeUnmount(() => {
+    observer.unobserve(projectPage);
+  });
 </script>
 
 <template>
   <div class="w-full flex flex-col">
     <TitleSection />
-    <IllustSection :load="loadProjects" id="spotlight" />
+    <WorksSection
+      :load="loadProjects"
+      id="spotlight"
+    />
   </div>
 </template>

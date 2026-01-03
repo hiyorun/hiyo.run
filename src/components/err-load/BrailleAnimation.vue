@@ -1,33 +1,24 @@
-<script setup>
-import { onMounted, ref } from 'vue';
+<script lang="ts" setup>
+  import { onMounted, ref } from 'vue';
 
-const brailles = [
-    '⡿',
-    '⣟',
-    '⣯',
-    '⣷',
-    '⣾',
-    '⣽',
-    '⣻',
-    '⢿'
-]
-const current = ref(0)
-const props = defineProps({
+  const brailles = ['⡿', '⣟', '⣯', '⣷', '⣾', '⣽', '⣻', '⢿'];
+  const current = ref(0);
+  const props = defineProps({
     speed: {
-        type: Number,
-        default: 100
-    }
-})
+      type: Number,
+      default: 100,
+    },
+  });
 
-onMounted(async () => {
+  onMounted(async () => {
     setInterval(() => {
-        current.value += 1
-        if (current.value >= brailles.length) {
-            current.value = 0
-        }
-    }, props.speed)
-})
+      current.value += 1;
+      if (current.value >= brailles.length) {
+        current.value = 0;
+      }
+    }, props.speed);
+  });
 </script>
 <template>
-    <span class=" text-xl">{{ brailles[current] }}</span>
+  <span class="text-xl">{{ brailles[current] }}</span>
 </template>

@@ -2,32 +2,51 @@
   "name": "hiyo-site",
   "version": "2.1.0",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview --port 4173 --host",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
     "cssnano": "^7.0.4",
-    "devicon": "^2.16.0",
+    "devicon": "^2.17.0",
+    "jsdom": "^27.4.0",
     "pinia": "^2.0.23",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
+    "@tsconfig/node24": "^24.0.3",
+    "@types/jsdom": "^27",
+    "@types/node": "^25.0.3",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
-    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vitest/eslint-plugin": "^1.6.4",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/tsconfig": "^0.8.1",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.22.0",
-    "eslint-plugin-vue": "^9.3.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-vue": "^10.6.2",
+    "jiti": "^2.6.1",
+    "npm-run-all2": "^8.0.4",
     "postcss": "^8.4.24",
-    "prettier": "^2.7.1",
+    "prettier": "^3.7.4",
+    "prettier-plugin-classnames": "^0.8.6",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^3.3.2",
-    "vite": "^3.0.9"
+    "terser": "^5.44.1",
+    "typescript": "^5.9.3",
+    "vite": "^3.0.9",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-tsc": "^3.2.1"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "packageManager": "yarn@4.12.0"
 }

@@ -2,36 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+  }
+}
+
 @font-face {
-  font-family: "Space Mono";
+  font-family: 'Space Mono';
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Space Mono";
+  font-family: 'Space Mono';
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Space Mono";
+  font-family: 'Space Mono';
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Space Mono";
+  font-family: 'Space Mono';
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 
 *:not(.material-symbols-outlined) {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
 }
 
 .noisy {
