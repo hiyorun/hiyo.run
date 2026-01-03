@@ -3,11 +3,9 @@
   import { usePrompt } from '@/states/prompts';
   import { onMounted } from 'vue';
   import BrailleAnimation from './BrailleAnimation.vue';
-  import { useViewport } from '@/uses/useViewport';
   import { useBusy } from '@/states/busy';
 
   const prompt = usePrompt();
-  const viewport = useViewport();
   const busy = useBusy();
 
   onMounted(() => {
@@ -22,8 +20,7 @@
   }
 
   function truncatePrompts() {
-    if (viewport.media.isSm) return '';
-    const maxLen = 30;
+    const maxLen = 1000;
     const prompt = shufflePrompt();
     if (prompt.length > maxLen) {
       const withEllipsis = prompt.substring(0, maxLen) + '...';
@@ -38,7 +35,8 @@
     class="flex gap-2 items-center"
   >
     <BrailleAnimation />
-    <span class="overflow-hidden text-sm text-nowrap">{{ truncatePrompts() }}</span>
+    <span class="overflow-hidden text-sm tracking-tight line-clamp-2 leading-4">{{ truncatePrompts() }}</span>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+</style>

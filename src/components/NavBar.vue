@@ -3,9 +3,11 @@
   import LoadingIndicator from './err-load/LoadingIndicator.vue';
   import { useRouter } from 'vue-router';
   import { useBusy } from '../states/busy';
+import { useViewport } from '@/uses/useViewport';
 
   const router = useRouter();
   const busy = useBusy();
+  const viewport = useViewport();
   const navigations = ref([
     {
       label: 'Gallery',
@@ -42,6 +44,7 @@
           aria-label="Home"
           @click="navigator('/')"
           class="font-bold text-kikyou-900 dark:text-kikyou-50"
+          v-if="!viewport.media.isMdAndUp ? !busy.isBusy : true "
         >
           hiyorun
         </button>
@@ -55,7 +58,7 @@
           @click="navigator(navigate.href)"
           class="transition-colors duration-200 py-2 px-4 bg-kikyou-200 hover:bg-kikyou-300
             dark:bg-kikyou-800 hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50
-            rounded-full"
+            rounded-full shadow-md"
         >
           {{ navigate.label }}
         </button>
