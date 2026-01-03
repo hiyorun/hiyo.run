@@ -35,14 +35,9 @@
     </RouterLink>
     <div class="flex flex-col gap-3">
       <span class="opacity-50 text-sm">{{ returnDateString(data?.date ? data.date : '') }}</span>
-      <span class="text-4xl tracking-tighter font-bold">
-        {{ data?.title }}
-        <span
-          class="font-medium"
-          v-if="data?.description !== ''"
-        >
-          | <span class="text-2xl">{{ data?.description }}</span>
-        </span>
+      <span class="tracking-tight flex flex-col">
+        <span class="text-4xl font-bold">{{ data?.title }}</span>
+        <span class="font-medium text-xl">{{ data?.description }}</span>
       </span>
       <div class="flex gap-2 text-sm font-semibold">
         <a
@@ -63,8 +58,7 @@
           v-for="stack in data?.stacks"
           :class="[`devicon-${stack}-plain`]"
           :key="stack"
-          class="p-2 bg-kikyou-200 dark:bg-kikyou-800 text-kikyou-900 dark:text-kikyou-50
-            rounded-full text-xl"
+          class="p-2 text-kikyou-900 dark:text-kikyou-50 rounded-full text-xl"
         ></i>
       </div>
     </div>

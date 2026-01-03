@@ -31,8 +31,10 @@
       flex-col gap-2 min-h-52 cursor-pointer text-left"
   >
     <span class="opacity-50 text-xs">{{ returnDateString(data.date.toLocaleString()) }}</span>
-    <span class="text-2xl font-bold">{{ props.data.title }}</span>
-    <span class="grow">{{ props.data.description }}</span>
+    <div class="flex flex-col tracking-tight">
+      <span class="text-2xl font-bold">{{ props.data.title }}</span>
+      <span class="leading-5">{{ props.data.description }}</span>
+    </div>
     <div class="flex gap-2 text-sm font-semibold">
       <a
         @click.stop
@@ -55,8 +57,7 @@
       >
         <i
           :class="[`devicon-${stack}-plain`]"
-          class="bg-kikyou-100 dark:bg-kikyou-800 rounded-full text-kikyou-800 dark:text-kikyou-100
-            text-xl p-2"
+          class="text-kikyou-800 dark:text-kikyou-100 text-xl p-2"
         ></i>
       </div>
       <span class="grow"></span>
