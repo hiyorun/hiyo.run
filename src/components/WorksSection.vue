@@ -1,32 +1,28 @@
 <script lang="ts" setup>
-  import { onMounted, ref, watch } from 'vue';
+  import { ref, watch } from 'vue';
   import { useAPI } from '../uses/useAPI';
+  import type { CodeObj } from '@/types/code';
+  import type { APIResponse } from '@/types/response';
 
-  const props = defineProps<{load: boolean}>();
-  const strapi = useAPI();
+  const props = defineProps<{ load: boolean }>();
+  const api = useAPI();
 
-  const posts = ref({});
+  const posts = ref<CodeObj[]>([]);
 
   async function lazyLoad(load: boolean) {
     if (!load) return;
-    const response = await strapi.get('timeline-posts', { populate: '*' });
-    response.data.forEach((val) => {
-      console.log(
-        val.attributes[val.attributes.post_type],
-        val.attributes.post_type,
-        val.attributes2,
-      );
-    });
-    posts.value = response;
+
+    const response = await api.get<APIResponse<CodeObj>>('timeline-posts');
+    posts.value = response.items;
   }
 
-  watch(props, (val) => {
-    lazyLoad(val);
-  });
-
-  onMounted(() => {
-    lazyLoad(props.load);
-  });
+  watch(
+    () => props.load,
+    (load) => {
+      lazyLoad(load);
+    },
+    { immediate: true },
+  );
 </script>
 <template>
   <div class="h-screen text-kikyou-50 bg-kikyou-700 dark:bg-kikyou-900 pt-20">
@@ -35,9 +31,10 @@
       <span class="text-4xl tracking-tighter font-bold">Corals of Creation</span>
       <span class="text-xl">A glance of my artistic psyche</span>
     </div>
-    <div v-for="post in posts">
-      {{ post.attributes }}
+    <div v-for="post in posts" :key="post.id">
+      {{ post.description }}
       {{ post.id }}
     </div>
   </div>
-</template>import tailwindcss from '@tailwindcss/vite';
+</template>
+import tailwindcss from '@tailwindcss/vite';
