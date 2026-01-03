@@ -5,12 +5,12 @@ export const usePrompt = defineStore('prompt', {
     prompts: [''],
   }),
   getters: {
-    getPrompt(state) {
+    getPrompt(): string[] {
       return this.prompts;
     },
   },
   actions: {
-    storePrompts(promptList) {
+    storePrompts(promptList: string[]) {
       this.prompts = promptList;
     },
   },

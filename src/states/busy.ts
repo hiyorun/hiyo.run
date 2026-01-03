@@ -15,7 +15,7 @@ export const useBusy = defineStore('isloading', {
     },
   },
   actions: {
-    loadAssets(count, done) {
+    loadAssets(count: number, done: number) {
       this.assetsLoaded = done;
       this.assetsToLoad = count;
     },
@@ -23,7 +23,7 @@ export const useBusy = defineStore('isloading', {
       this.assetsLoaded = 0;
       this.assetsToLoad = 0;
     },
-    setBusy(busy) {
+    setBusy(busy: boolean) {
       this.busy = busy;
     },
   },
