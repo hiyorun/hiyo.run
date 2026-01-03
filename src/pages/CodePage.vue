@@ -3,8 +3,8 @@
   import { useAPI } from '../uses/useAPI';
   import { useBusy } from '../states/busy';
   import CodeGallery from '../components/CodeGallery.vue';
-import type { CodeObj } from '@/types/code';
-import type { APIResponse } from '@/types/response';
+  import type { CodeObj } from '@/types/code';
+  import type { APIResponse } from '@/types/response';
 
   const api = useAPI();
   const busy = useBusy();
@@ -12,7 +12,9 @@ import type { APIResponse } from '@/types/response';
 
   onBeforeMount(async () => {
     busy.setBusy(true);
-    const response  = await api.get<APIResponse<CodeObj>>('codes');
+    const response = await api.withRetry<APIResponse<CodeObj>>(() =>
+      api.get<APIResponse<CodeObj>>('codes'), 5, 2000
+    );
     response.items.sort((a: CodeObj, b: CodeObj) => {
       const dateA = new Date(a.date),
         dateB = new Date(b.date);

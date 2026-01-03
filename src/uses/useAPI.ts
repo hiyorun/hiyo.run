@@ -1,8 +1,7 @@
 import { onUnmounted } from 'vue';
+import { sleep } from './useHelper';
 
-type QueryParams =
-  | Record<string, string | number | boolean | null | undefined>
-  | URLSearchParams;
+type QueryParams = Record<string, string | number | boolean | null | undefined> | URLSearchParams;
 
 export function useAPI() {
   const apiURL = import.meta.env.VITE_API_URL;
@@ -10,10 +9,7 @@ export function useAPI() {
 
   let controller: AbortController | null = null;
 
-  async function get<T = unknown>(
-    path: string,
-    query?: QueryParams
-  ): Promise<T> {
+  async function get<T = unknown>(path: string, query?: QueryParams): Promise<T> {
     controller = new AbortController();
 
     let urlString = `${apiURL}/`;
@@ -29,9 +25,10 @@ export function useAPI() {
         query instanceof URLSearchParams
           ? query
           : new URLSearchParams(
-            Object.entries(query).filter(
-              ([, v]) => v !== null && v !== undefined
-            ) as [string, string][]
+            Object.entries(query).filter(([, v]) => v !== null && v !== undefined) as [
+              string,
+              string,
+            ][],
           );
 
       if (queries.size > 0) {
@@ -62,11 +59,31 @@ export function useAPI() {
     }
   }
 
+  async function withRetry<T>(fn: () => Promise<T>, retries = 3, delayMs = 300): Promise<T> {
+    let lastError: unknown;
+
+    for (let i = 0; i <= retries; i++) {
+      try {
+        return await fn();
+      } catch (err) {
+        if (err instanceof DOMException && err.name === 'AbortError') {
+          throw err;
+        }
+
+        lastError = err;
+        if (i >= retries) break;
+
+        await sleep(delayMs * (i + 1));
+      }
+    }
+
+    throw lastError instanceof Error ? lastError : new Error(String(lastError));
+  }
+
   onUnmounted(() => {
     controller?.abort();
     controller = null;
   });
 
-  return { get };
+  return { get, withRetry };
 }
-
