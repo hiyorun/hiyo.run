@@ -5,7 +5,7 @@
   import Reddit from '@/assets/imgs/icons/RedditIcon.vue';
   import Twitter from '@/assets/imgs/icons/TwitterIcon.vue';
   import Misskey from '@/assets/imgs/icons/MisskeyIcon.vue';
-  import Waves from './Waves.vue';
+  import Waves from './DecorWaves.vue';
   import { useRouter } from 'vue-router';
 
   const router = useRouter();
@@ -61,7 +61,8 @@
       </div>
       <div class="flex gap-2 md:justify-center">
         <a
-          v-for="social in socials"
+          v-for="(social, index) in socials"
+          :key="index"
           :href="social.link"
           :title="social.name"
           class="transition-colors duration-200 bg-kikyou-700 hover:bg-kikyou-600 dark:bg-kikyou-50
