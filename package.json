@@ -16,6 +16,7 @@
     "@heroicons/vue": "^2.0.18",
     "cssnano": "^7.0.4",
     "devicon": "^2.17.0",
+    "jsdom": "^27.4.0",
     "pinia": "^2.0.23",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@tsconfig/node24": "^24.0.3",
+    "@types/jsdom": "^27",
     "@types/node": "^25.0.3",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
