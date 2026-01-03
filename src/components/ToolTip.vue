@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-  const props = defineProps({
-    msg: '',
-  });
+  const props = defineProps<{
+    msg: string;
+  }>();
 </script>
 <template>
   <div class="group relative">
