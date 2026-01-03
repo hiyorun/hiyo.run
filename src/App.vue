@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-  import { Transition, onMounted, onUnmounted, ref } from 'vue';
+  import { onMounted, onUnmounted, ref } from 'vue';
   import NavBar from './components/NavBar.vue';
+  import { usePreferences } from './states/preferences';
 
   const floating = ref(false);
+  const preferences = usePreferences();
 
   onMounted(() => {
     window.addEventListener('scroll', handleScroll);
@@ -21,10 +23,10 @@
   }
 </script>
 <template>
-  <div class="initial-load opacity-100">
-    <RouterView v-slot="{ Component, route }">
+  <div :class="{ 'reduce-motion': preferences.reducedMotion }" class="initial-load opacity-100">
+    <RouterView v-slot="{ Component }">
       <Transition
-        name="fade"
+        :name="preferences.reducedMotion ? '' : 'fade'"
         mode="out-in"
       >
         <component :is="Component" />

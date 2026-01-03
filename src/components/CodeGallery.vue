@@ -24,11 +24,11 @@
   }
 </script>
 <template>
-  <a
+  <button
     @click="navigator({ name: 'code-details', params: { id: props.data.id } })"
     class="transition-colors duration-200 bg-kikyou-200 hover:bg-kikyou-300 dark:bg-kikyou-900
       hover:dark:bg-kikyou-700 text-kikyou-900 dark:text-kikyou-50 shadow-xl rounded-2xl p-5 flex
-      flex-col gap-2 min-h-52 cursor-pointer"
+      flex-col gap-2 min-h-52 cursor-pointer text-left"
   >
     <span class="opacity-50 text-xs">{{ returnDateString(data.date.toLocaleString()) }}</span>
     <span class="text-2xl font-bold">{{ props.data.title }}</span>
@@ -93,5 +93,5 @@
         </a>
       </Tooltip>
     </div>
-  </a>
+  </button>
 </template>

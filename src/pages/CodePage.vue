@@ -5,15 +5,19 @@
   import CodeGallery from '../components/CodeGallery.vue';
   import type { CodeObj } from '@/types/code';
   import type { APIResponse } from '@/types/response';
+  import { usePreferences } from '@/states/preferences';
 
   const api = useAPI();
   const busy = useBusy();
+  const preferences = usePreferences();
   const codes = ref<CodeObj[]>([]);
 
   onBeforeMount(async () => {
     busy.setBusy(true);
-    const response = await api.withRetry<APIResponse<CodeObj>>(() =>
-      api.get<APIResponse<CodeObj>>('codes'), 5, 2000
+    const response = await api.withRetry<APIResponse<CodeObj>>(
+      () => api.get<APIResponse<CodeObj>>('codes'),
+      5,
+      2000,
     );
     response.items.sort((a: CodeObj, b: CodeObj) => {
       const dateA = new Date(a.date),
@@ -31,7 +35,7 @@
       <span class="">A glimpse into my code works</span>
     </div>
     <TransitionGroup
-      name="fade"
+      :name="preferences.reducedMotion ? '' : 'fade'"
       mode="out-in"
       tag="div"
       class="grid grid-cols-1 md:grid-cols-2 gap-4"

@@ -3,11 +3,13 @@
   import LoadingIndicator from './err-load/LoadingIndicator.vue';
   import { useRouter } from 'vue-router';
   import { useBusy } from '../states/busy';
-import { useViewport } from '@/uses/useViewport';
+  import { useViewport } from '@/uses/useViewport';
+  import { usePreferences } from '@/states/preferences';
 
   const router = useRouter();
   const busy = useBusy();
   const viewport = useViewport();
+  const preferences = usePreferences();
   const navigations = ref([
     {
       label: 'Gallery',
@@ -32,19 +34,21 @@ import { useViewport } from '@/uses/useViewport';
 <template>
   <div
     class="transition-all duration-1000"
-    :class="{ 'p-2': floating }"
+    :class="{ 'p-2': floating || preferences.reducedMotion }"
   >
     <div
-      class="transition-all duration-1000 bg-none p-2 w-full flex justify-between items-center
-        rounded-full mx-auto max-w-screen-xl"
-      :class="{ 'bg-kikyou-100 dark:bg-kikyou-900 shadow-xl': floating }"
+      class="transition-all duration-1000 bg-none p-2 w-full flex
+        justify-between items-center rounded-full mx-auto max-w-screen-xl"
+      :class="{
+        'bg-kikyou-100 dark:bg-kikyou-900 shadow-xl': floating || preferences.reducedMotion,
+      }"
     >
       <div class="flex items-center px-4 h-10 gap-4">
         <button
           aria-label="Home"
           @click="navigator('/')"
           class="font-bold text-kikyou-900 dark:text-kikyou-50"
-          v-if="!viewport.media.isMdAndUp ? !busy.isBusy : true "
+          v-if="!viewport.media.isMdAndUp ? !busy.isBusy : true"
         >
           hiyorun
         </button>

@@ -1,8 +1,10 @@
 <script lang="ts" setup>
   import { onMounted, reactive, watch } from 'vue';
   import { useViewport } from '@/uses/useViewport';
+  import { usePreferences } from '@/states/preferences';
 
   const size = useViewport();
+  const preferences = usePreferences();
 
   const wave = reactive({
     height: 50,
@@ -41,7 +43,7 @@
 <template>
   <div class="w-screen text-kikyou-700 dark:text-kikyou-900">
     <div class="overflow-hidden">
-      <div class="wave">
+      <div :class="{ wave: !preferences.reducedMotion }">
         <svg
           :style="{ width: `${wave.total}px` }"
           fill="currentColor"
