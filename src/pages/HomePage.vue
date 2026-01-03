@@ -6,12 +6,12 @@
 
   const router = useRouter();
 
-  let projectPage;
-  let observer;
+  let projectPage: Element;
+  let observer: IntersectionObserver;
   let trackPos = 0;
   const loadProjects = ref(false);
 
-  function observerCallback(entries) {
+  const observerCallback: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry) => {
       const ratio = entry.intersectionRatio;
       if (ratio < 0.1 && trackPos > ratio) {
@@ -19,10 +19,10 @@
       }
       trackPos = ratio;
     });
-  }
+  };
 
   onMounted(() => {
-    projectPage = document.getElementById('spotlight');
+    projectPage = document.getElementById('spotlight') as Element;
     observer = new IntersectionObserver(observerCallback, {
       rootMargin: '0px',
       threshold: [0, 0.1],
