@@ -6,7 +6,7 @@ import vue from "@vitejs/plugin-vue";
 // https://vite.dev/config/
 export default defineConfig({
   build: {
-    cssMinify: "lightningcss",
+    minify: "terser",
   },
   plugins: [vue()],
   resolve: {
