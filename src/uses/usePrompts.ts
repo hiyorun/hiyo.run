@@ -7,6 +7,7 @@ export function shufflePrompt() {
     value: '',
   });
 
-  prompt.value = promptFunc.getPrompt[Math.floor(Math.random() * promptFunc.getPrompt.length)];
+  prompt.value =
+    promptFunc.getPrompt[Math.floor(Math.random() * promptFunc.getPrompt.length)] || '';
   return prompt.value;
 }
