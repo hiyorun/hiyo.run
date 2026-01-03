@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import { useRouter } from 'vue-router';
-  import Tooltip from './Tooltip.vue';
+  import Tooltip from './ToolTip.vue';
   import 'devicon';
   import { useBusy } from '../states/busy';
   import type { CodeObj } from '@/types/code';
