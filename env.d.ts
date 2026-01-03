@@ -1,5 +1,6 @@
 interface ImportMeta {
   env: {
+    BASE_URL: string;
     VITE_API_URL: string;
     VITE_API_BASE_PATH: string;
   };

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vue-router';
 import HomePage from '../pages/HomePage.vue';
 
 const router = createRouter({
@@ -109,7 +109,7 @@ const router = createRouter({
       },
     },
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to) {
     if (to.hash) {
       return {
         el: to.hash,
@@ -119,43 +119,32 @@ const router = createRouter({
   },
 });
 
-router.beforeEach((to, from, next) => {
-  const nearestWithTitle = to.matched
-    .slice()
-    .reverse()
-    .find((r) => r.meta && r.meta.title);
-  const nearestWithMeta = to.matched
-    .slice()
-    .reverse()
-    .find((r) => r.meta && r.meta.metaTags);
-  const previousNearestWithMeta = from.matched
-    .slice()
-    .reverse()
-    .find((r) => r.meta && r.meta.metaTags);
+router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+  const nearestWithTitle = [...to.matched].reverse().find((r) => r.meta.title);
+  const nearestWithMeta = [...to.matched].reverse().find((r) => r.meta.metaTags);
+  const previousNearestWithMeta = [...from.matched].reverse().find((r) => r.meta.metaTags);
 
-  if (nearestWithTitle) {
+  if (nearestWithTitle?.meta.title) {
     document.title = nearestWithTitle.meta.title;
-  } else if (previousNearestWithMeta) {
+  } else if (previousNearestWithMeta?.meta.title) {
     document.title = previousNearestWithMeta.meta.title;
   }
-  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map((el) =>
-    el.parentNode.removeChild(el),
-  );
 
-  if (!nearestWithMeta) return next();
+  document.querySelectorAll('[data-vue-router-controlled]').forEach((el) => el.remove());
+
+  if (!nearestWithMeta?.meta.metaTags) return;
 
   nearestWithMeta.meta.metaTags
     .map((tagDef) => {
       const tag = document.createElement('meta');
-      Object.keys(tagDef).forEach((key) => {
-        tag.setAttribute(key, tagDef[key]);
+
+      Object.entries(tagDef).forEach(([key, value]) => {
+        tag.setAttribute(key, value);
       });
+
       tag.setAttribute('data-vue-router-controlled', '');
       return tag;
     })
     .forEach((tag) => document.head.appendChild(tag));
-
-  next();
 });
-
 export default router;
