@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import TitleSection from '../components/TitleSection.vue';
-  import IllustSection from '../components/IllustSection.vue';
+  import WorksSection from '../components/WorksSection.vue';
   import { onBeforeUnmount, onMounted, ref } from 'vue';
   import { useRouter } from 'vue-router';
 
@@ -39,7 +39,7 @@
 <template>
   <div class="w-full flex flex-col">
     <TitleSection />
-    <IllustSection
+    <WorksSection
       :load="loadProjects"
       id="spotlight"
     />

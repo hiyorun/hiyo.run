@@ -2,14 +2,12 @@
   import { onMounted, ref, watch } from 'vue';
   import { useAPI } from '../uses/useAPI';
 
-  const props = defineProps({
-    load: Boolean,
-  });
+  const props = defineProps<{load: boolean}>();
   const strapi = useAPI();
 
   const posts = ref({});
 
-  async function lazyLoad(load) {
+  async function lazyLoad(load: boolean) {
     if (!load) return;
     const response = await strapi.get('timeline-posts', { populate: '*' });
     response.data.forEach((val) => {
@@ -42,4 +40,4 @@
       {{ post.id }}
     </div>
   </div>
-</template>
+</template>import tailwindcss from '@tailwindcss/vite';
